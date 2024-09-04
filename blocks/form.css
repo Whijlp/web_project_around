@@ -1,0 +1,25 @@
+.formn {
+  width: 430px;
+  height: 330px;
+  border-radius: 10px;
+}
+
+.form__edit {
+  border: none;
+  padding: 0;
+}
+.form__input {
+  width: 358px;
+  height: 27px;
+  border: none;
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  text-align: left;
+  margin: 30px 0 0 36px;
+}
+
+.form__input[type="text"] {
+  border-bottom: 2px solid rgba(128, 128, 128, 0.708);
+}

@@ -42,8 +42,7 @@
 }
 
 .profile__edit-button:hover {
-  border-color: grey;
-  opacity: 50%;
+  opacity: 80%;
 }
 
 .profile__add-button {
@@ -58,8 +57,7 @@
 }
 
 .profile__add-button:hover {
-  border-color: grey;
-  opacity: 50%;
+  opacity: 80%;
 }
 
 .profile__image-button {
