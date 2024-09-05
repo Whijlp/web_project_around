@@ -64,3 +64,42 @@
   width: 22px;
   height: 22px;
 }
+@media screen and (max-width: 768px) {
+  .profile {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .profile__title {
+    font-size: 35px;
+  }
+  .profile_image {
+    margin: auto;
+  }
+
+  .profile__subtitle {
+    font-size: 15px;
+  }
+
+  .profile__add-button {
+    margin: auto;
+  }
+}
+@media screen and (max-width: 320px) {
+  .profile {
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile__title {
+    margin: 20px 0 14px;
+    font-size: 22px;
+  }
+  .profile__info-container {
+    text-align: center;
+  }
+  .profile__add-button {
+    margin: 32px 0 36px;
+    width: 282px;
+  }
+}

@@ -23,3 +23,10 @@
 .form__input[type="text"] {
   border-bottom: 2px solid rgba(128, 128, 128, 0.708);
 }
+
+@media screen and (max-width: 320px) {
+  .form__input {
+    margin-left: 22px;
+    width: 238px;
+  }
+}

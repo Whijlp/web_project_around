@@ -61,3 +61,30 @@
   display: flex;
   margin: auto;
 }
+@media screen and (max-width: 768px) {
+  .forms {
+    top: 275px;
+    left: 200px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .forms {
+    background-color: white;
+    width: 282px;
+    height: 322px;
+  }
+  .forms__submit-button {
+    margin-left: 22px;
+    width: 238px;
+    height: 46px;
+  }
+  .forms__title {
+    margin-left: 22px;
+    font-size: 18px;
+  }
+
+  .forms__close-button {
+    bottom: 325px;
+    left: 290px;
+  }
+}

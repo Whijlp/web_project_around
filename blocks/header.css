@@ -1,5 +1,5 @@
 .header {
-  max-width: 880px;
+  width: 880px;
   margin: auto;
 }
 .header__image {
@@ -12,4 +12,14 @@
   margin: 41px 0 40px;
   background-color: #545454;
   height: 2px;
+}
+@media screen and (max-width: 768px) {
+  .header__image {
+    margin-left: 40px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .header__image {
+    margin-left: 27px;
+  }
 }

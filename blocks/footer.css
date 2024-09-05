@@ -8,8 +8,18 @@
   padding: 67px 0 60px;
 }
 .footer__text {
-  width: 880px;
-  max-width: 100%;
+  max-width: 880px;
   margin: auto;
   text-align: left;
+}
+@media screen and (max-width: 768px) {
+  .footer__text {
+    margin-left: 15px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .footer__text {
+    width: 400px;
+    margin-left: 15px;
+  }
 }
