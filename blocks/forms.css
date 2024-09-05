@@ -1,5 +1,8 @@
 .forms {
   display: none;
+}
+
+#forms {
   border-radius: 10px;
   background-color: white;
   width: 430px;

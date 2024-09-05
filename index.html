@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="body">
-    <div class="body__overlay"></div>
+    <div class="body__overlay" id="body__overlay"></div>
     <div class="page">
       <header class="header">
         <img class="header__image" src="./images/Vector.png" alt="Logo" />
@@ -138,29 +138,27 @@
           </div>
           </div>
         </section>
-        <section class="forms">
+        <div class="forms" id="forms">
           <h2 class="forms__title">Editar perfil</h2>
           <form class="form">
             <fieldset class="form__edit">
               <input class="form__input" type="text"
               id="name"
               placeholder="Nombre"
-              required>
+              >
 
               <input class="form__input" type="text"
-              id="name"
+              id="acer_de_mi"
               placeholder="Acerca de mi"
-              required>
+              >
             </fieldset>
             <button class="forms__submit-button">Guardar</button>
             <button class="forms__close-button"><img   class="forms__image-button" src="../web_project_around/images/formn image.svg" alt=""></button>
           </form>
-        </section>
+        </div>
       </main>
     </div>
-  <script>
-
-  </script>
+  <script src="./scripts/index.js"></script>
   </body>
   <footer class="footer">
     <p class="footer__text">@ whiter landiez</p>
