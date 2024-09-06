@@ -1,17 +1,11 @@
 .forms {
-  display: none;
+  position: relative;
+  z-index: 2;
+  display: block;
   border-radius: 10px;
   background-color: white;
   width: 430px;
   height: 330px;
-  position: fixed;
-  top: 300px;
-  left: 550px;
-  z-index: 2;
-}
-
-.forms_show {
-  display: block;
 }
 
 .forms__title {
@@ -61,12 +55,7 @@
   display: flex;
   margin: auto;
 }
-@media screen and (max-width: 768px) {
-  .forms {
-    top: 275px;
-    left: 200px;
-  }
-}
+
 @media screen and (max-width: 320px) {
   .forms {
     background-color: white;
@@ -85,6 +74,6 @@
 
   .forms__close-button {
     bottom: 325px;
-    left: 290px;
+    left: 245px;
   }
 }
