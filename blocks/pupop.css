@@ -1,4 +1,4 @@
-.pupop {
+.popup {
   position: fixed;
   top: 0;
   left: 0;
@@ -9,6 +9,19 @@
   align-items: center;
 }
 
-.pupop__show {
+.popup__show {
   display: flex;
+}
+.popup__overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.overlay_show {
+  display: block;
 }
