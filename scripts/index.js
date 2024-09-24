@@ -1,5 +1,7 @@
 const openProfilePopup = document.querySelector(".profile__edit-button");
+const openNewPlacePopup = document.querySelector(".profile__add-button");
 const formsPopup = document.querySelector(".popup");
+const formsPopupNewPlaces = document.querySelector("#popup__new-places");
 const closeProfilePopup = document.querySelector(".forms__close-button");
 const overlayContainer = document.querySelector(".popup__overlay");
 const formElement = document.querySelector(".forms__submit-button");
@@ -36,3 +38,7 @@ function fillFormInputs() {
   nameInput.value = nameElement.textContent;
   jobInput.value = jobElement.textContent;
 }
+
+openNewPlacePopup.addEventListener("click", () => {
+  formsPopupNewPlaces.showModal();
+});
