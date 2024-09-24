@@ -1,7 +1,7 @@
 .forms {
   position: relative;
   z-index: 2;
-  display: block;
+  /*display: block;*/
   border-radius: 10px;
   background-color: white;
   width: 430px;
