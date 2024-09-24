@@ -2,6 +2,7 @@
   max-width: 282px;
   border-radius: 10px;
   background-color: white;
+  position: relative;
 }
 
 .element__image {
@@ -26,8 +27,31 @@
   justify-content: space-between;
 }
 .element__like {
-  margin-right: 15px;
+  width: 21px;
+  height: 19px;
+  margin: auto 15px;
   cursor: pointer;
+}
+
+.element__like:hover {
+  opacity: 70%;
+}
+.active {
+  display: none;
+}
+
+.element__trash {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  height: 19px;
+  cursor: pointer;
+}
+
+.element__trash:hover {
+  opacity: 70%;
 }
 
 @media screen and (max-width: 768px) {

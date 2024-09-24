@@ -7,6 +7,8 @@ const nameInput = document.getElementById("nombre");
 const jobInput = document.getElementById("job_info");
 const nameElement = document.querySelector(".profile__title");
 const jobElement = document.querySelector(".profile__subtitle");
+const like = document.querySelectorAll(".element__like");
+const likeActive = document.querySelectorAll("#like-active");
 
 openProfilePopup.addEventListener("click", handleOpenPopup);
 
@@ -36,3 +38,17 @@ function fillFormInputs() {
   nameInput.value = nameElement.textContent;
   jobInput.value = jobElement.textContent;
 }
+
+like.forEach((like) => {
+  like.addEventListener("click", () => {
+    likeActive.classList.remove("active");
+    like.setAttribute("style", "display:none");
+  });
+});
+
+likeActive.forEach((likeActive) => {
+  likeActive.addEventListener("click", () => {
+    likeActive.classList.add("active");
+    like.removeAttribute("style", "display:none");
+  });
+});

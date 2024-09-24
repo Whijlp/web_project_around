@@ -3,6 +3,7 @@
   margin-top: 50px;
   gap: 21px 17px;
   display: grid;
+
   grid-template-columns: auto auto auto;
 }
 
