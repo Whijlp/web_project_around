@@ -6,8 +6,9 @@
 }
 
 .element__image {
-  max-width: 282px;
-  min-height: 282px;
+  width: 282px;
+  height: 282px;
+  object-fit: cover;
   border-radius: 9px 9px 0 0;
 }
 .element__title {
@@ -31,8 +32,11 @@
   height: 19px;
   margin: auto 15px;
   cursor: pointer;
+  background-image: url(../images/corazon.svg);
 }
-
+.element__like-active {
+  background-image: url(../images/like_active.png);
+}
 .element__like:hover {
   opacity: 70%;
 }

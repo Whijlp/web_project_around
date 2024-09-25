@@ -25,3 +25,26 @@
 .overlay_show {
   display: block;
 }
+
+.popup_dialog {
+  border: 0;
+  background: transparent;
+}
+
+.popup__img {
+  max-width: 800px;
+  width: 90%;
+  max-height: 800px;
+  height: 90%;
+  object-fit: cover;
+}
+
+::backdrop {
+  background-color: black;
+  opacity: 0.7;
+}
+
+.popup__description {
+  color: white;
+  text-align: center;
+}
