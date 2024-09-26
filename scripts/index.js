@@ -7,10 +7,13 @@ const nameInput = document.getElementById("nombre");
 const jobInput = document.getElementById("job_info");
 const nameElement = document.querySelector(".profile__title");
 const jobElement = document.querySelector(".profile__subtitle");
-const like = document.querySelectorAll(".element__like");
+const like = document.querySelector(".element__like");
 const dialogPopup = document.querySelector(".popup_dialog");
 const cardTemplate = document.querySelector("#card-template");
 const cardContainer = document.querySelector(".elements");
+const closeImgPopup = document.querySelector(".popup__close-button");
+
+console.log(like);
 
 const initialCards = [
   {
@@ -55,6 +58,11 @@ initialCards.forEach((item) => {
     dialogImge.src = item.link;
     dialogDescription.textContent = item.name;
   });
+
+  closeImgPopup.addEventListener("click", () => {
+    dialogPopup.close();
+  });
+
   cardContainer.prepend(card);
 });
 

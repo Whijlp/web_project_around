@@ -55,6 +55,7 @@
 .forms__image-button {
   display: flex;
   margin: auto;
+  border: none;
 }
 
 @media screen and (max-width: 320px) {
