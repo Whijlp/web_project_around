@@ -91,6 +91,7 @@ function handleOpenPopup() {
 }
 
 function handleClosePopup() {
+  console.log("ola");
   formsPopup.classList.remove("popup__show");
   overlayContainer.classList.remove("overlay_show");
 }
