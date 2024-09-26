@@ -1,7 +1,7 @@
-.formn {
-  width: 430px;
-  height: 330px;
-  border-radius: 10px;
+.form__dialog {
+  background: none;
+  border: none;
+  padding: 45px;
 }
 
 .form__edit {
@@ -17,7 +17,7 @@
   font-weight: 400;
   line-height: 16.94px;
   text-align: left;
-  margin: 30px 0 0 36px;
+  margin: 30px 0 0 0;
 }
 
 .form__input[type="text"] {

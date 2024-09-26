@@ -90,7 +90,8 @@ function handleOpenPopup() {
   overlayContainer.classList.add("overlay_show");
 }
 
-function handleClosePopup() {
+function handleClosePopup(evt) {
+  evt.preventDefault();
   formsPopup.classList.remove("popup__show");
   overlayContainer.classList.remove("overlay_show");
 }

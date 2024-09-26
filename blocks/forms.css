@@ -1,16 +1,18 @@
 .forms {
+  box-sizing: border-box;
   position: relative;
   z-index: 2;
-  /*display: block;*/
   border-radius: 10px;
   background-color: white;
   width: 430px;
+  max-width: 100%;
   height: 330px;
+  padding: 35px;
 }
 
 .forms__title {
   color: black;
-  margin: 34px 0 0 36px;
+  margin: 0;
   font-family: "Inter";
   font-size: 24px;
   font-weight: 900;
@@ -19,7 +21,7 @@
 }
 
 .forms__submit-button {
-  margin: 48px 0 36px 36px;
+  margin: 48px 0 0 0;
   width: 358px;
   height: 50px;
   border-radius: 2px;
