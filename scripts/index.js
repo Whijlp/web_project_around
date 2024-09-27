@@ -128,3 +128,10 @@ createCardForm.addEventListener("submit", (evt) => {
   createCard({ link: photoNewCard.value, name: titleNewCard.value });
   formsPopupNewPlaces.close();
 });
+
+dialogPopup.addEventListener("click", (evt) => {
+  if (evt.target.className === "popup_dialog") {
+    dialogPopup.close();
+    console.log("cierra");
+  }
+});
