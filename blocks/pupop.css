@@ -8,7 +8,10 @@
   justify-content: center;
   align-items: center;
 }
-
+::backdrop {
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.546);
+}
 .popup__show {
   display: flex;
 }
@@ -24,4 +27,39 @@
 }
 .overlay_show {
   display: block;
+  backdrop-filter: blur(10px);
+}
+
+.popup_dialog {
+  border: 0;
+  background: transparent;
+  outline: none;
+  padding: 50px;
+}
+
+.popup__close-button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: black;
+  cursor: pointer;
+  outline: none;
+  border-radius: 5px;
+}
+
+.popup__img {
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  max-height: 800px;
+  object-fit: cover;
+}
+
+.popup__description {
+  color: white;
+  text-align: center;
 }

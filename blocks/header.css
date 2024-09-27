@@ -11,7 +11,7 @@
 
 .header__line {
   margin: 41px 0 40px;
-  background-color: #545454;
+  background-color: #ffffff7b;
   height: 2px;
 }
 @media screen and (max-width: 768px) {
@@ -19,6 +19,7 @@
     margin-left: 40px;
   }
 }
+
 @media screen and (max-width: 320px) {
   .header__image {
     margin-left: 27px;
