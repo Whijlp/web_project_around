@@ -46,28 +46,20 @@ const initialCards = [
   },
 ];
 
-initialCards.forEach((item) => {
-  createCard(item);
-});
-
-openProfilePopup.addEventListener("click", handleOpenPopup);
-
-closeProfilePopup.addEventListener("click", handleClosePopup);
-
-formElement.addEventListener("click", handleProfileFormSubmit);
-
 function createCard(item) {
   const card = cardTemplate.content.querySelector(".element").cloneNode(true);
   const cardImg = card.querySelector(".element__image");
   const cardDescription = card.querySelector(".element__title");
+  const dialogImge = dialogPopup.querySelector(".popup__img");
+  const dialogDescription = dialogPopup.querySelector(".popup__description");
+  const like = card.querySelector(".element__like");
+  const trashCard = card.querySelector(".element__trash");
+
   cardImg.src = item.link;
   cardDescription.textContent = item.name;
 
   cardImg.addEventListener("click", () => {
     dialogPopup.showModal();
-
-    const dialogImge = dialogPopup.querySelector(".popup__img");
-    const dialogDescription = dialogPopup.querySelector(".popup__description");
 
     dialogImge.src = item.link;
     dialogDescription.textContent = item.name;
@@ -77,12 +69,10 @@ function createCard(item) {
     dialogPopup.close();
   });
 
-  const like = card.querySelector(".element__like");
   like.addEventListener("click", () => {
     like.classList.toggle("element__like-active");
   });
 
-  const trashCard = card.querySelector(".element__trash");
   trashCard.addEventListener("click", () => {
     card.remove();
   });
@@ -113,6 +103,16 @@ function fillFormInputs() {
   nameInput.value = nameElement.textContent;
   jobInput.value = jobElement.textContent;
 }
+
+initialCards.forEach((item) => {
+  createCard(item);
+});
+
+openProfilePopup.addEventListener("click", handleOpenPopup);
+
+closeProfilePopup.addEventListener("click", handleClosePopup);
+
+formElement.addEventListener("click", handleProfileFormSubmit);
 
 openNewPlacePopup.addEventListener("click", () => {
   formsPopupNewPlaces.showModal();
