@@ -19,6 +19,7 @@
     margin-left: 40px;
   }
 }
+
 @media screen and (max-width: 320px) {
   .header__image {
     margin-left: 27px;

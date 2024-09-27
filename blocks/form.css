@@ -29,4 +29,8 @@
     margin-left: 22px;
     width: 238px;
   }
+
+  .form__dialog {
+    padding: 25px;
+  }
 }
