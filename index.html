@@ -27,7 +27,7 @@
               <h2 class="profile__title">Jacques Cousteau</h2>
               <p class="profile__subtitle">Explorador</p>
             </div>
-            <button class="profile__edit-button">
+            <button class="profile__edit-button" title="Editar perfil">
               <img
                 class="profile__edit-image"
                 src="./images/Edit_profile.png"
@@ -35,7 +35,7 @@
               />
             </button>
           </div>
-          <button class="profile__add-button">
+          <button class="profile__add-button" title="Crear tarjeta">
             <img
               class="profile__image-button"
               src="./images/boton_cruz.png"
@@ -50,8 +50,8 @@
               <div class="element__text">
                 <p class="element__title"></p>
                 <div class="element__like"></div>
-                <button class="element__trash">
-                  <img src="./images/Trash.png" alt="eliminar" />
+                <button class="element__trash" title="eliminar">
+                  <img src="./images/Trash.png" alt="imane dee basurera" />
                 </button>
               </div>
             </div>
@@ -59,19 +59,19 @@
           <dialog class="popup_dialog">
             <img class="popup__img" src="" />
             <div class="popup__description"></div>
-            <button class="popup__close-button">
+            <button class="popup__close-button" title="cerrar">
               <img
                 class="forms__image-button"
                 src="./images/formn_image.svg"
-                alt=""
+                alt="imagen de una X"
               />
             </button>
           </dialog>
         </section>
-        <dialog class="dialog" id="popup__new-places">
+        <dialog class="form__dialog" id="popup__new-places">
           <div class="forms">
-            <h2 class="forms__title">Nuevos Lugares</h2>
-            <form class="form">
+            <h2 class="forms__title">Nuevo Lugar</h2>
+            <form class="form" id="create-card">
               <fieldset class="form__edit">
                 <input
                   class="form__input"
@@ -86,12 +86,22 @@
                   placeholder="Enlace de la imagen"
                 />
               </fieldset>
-              <button class="forms__submit-button">Guardar</button>
-              <button class="forms__close-button">
+              <button
+                class="forms__submit-button"
+                type="submit"
+                title="Crear tarjeta nueva "
+              >
+                Crear
+              </button>
+              <button
+                class="forms__close-button"
+                id="place-close-button"
+                title="cerrar"
+              >
                 <img
                   class="forms__image-button"
                   src="./images/formn_image.svg"
-                  alt=""
+                  alt="imagen de una X"
                 />
               </button>
             </form>
@@ -116,12 +126,18 @@
                   placeholder="Acerca de mi"
                 />
               </fieldset>
-              <button class="forms__submit-button">Guardar</button>
+              <button
+                class="forms__submit-button"
+                id="perfil-button"
+                title="Guardar cambios"
+              >
+                Guardar
+              </button>
               <button class="forms__close-button" title="cerrar">
                 <img
                   class="forms__image-button"
                   src="./images/formn_image.svg"
-                  alt=""
+                  alt="imagen de una X"
                 />
               </button>
             </form>
