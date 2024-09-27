@@ -16,7 +16,7 @@ const cardTemplate = document.querySelector("#card-template");
 const cardContainer = document.querySelector(".elements");
 const closeImgPopup = document.querySelector(".popup__close-button");
 const createCardForm = document.querySelector("#create-card");
-const titleNewCard = document.querySelector("#Titulo");
+const titleNewCard = document.querySelector("#titulo");
 const photoNewCard = document.querySelector("#photo_info");
 
 const initialCards = [

@@ -3,6 +3,17 @@
   border-radius: 10px;
   background-color: white;
   position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.element:hover {
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.9);
+  transform: scale(1.09);
+}
+
+.element:hover .element__image {
+  transform: scale(1.1);
 }
 
 .element__image {
@@ -10,6 +21,7 @@
   height: 282px;
   object-fit: cover;
   border-radius: 9px 9px 0 0;
+  transition: all 0.2s ease-in-out;
 }
 .element__title {
   text-align: center;

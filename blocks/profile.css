@@ -34,7 +34,8 @@
 }
 
 .profile__edit-button {
-  background-color: black;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5) inset;
+  background-color: transparent;
   width: 24px;
   height: 24px;
   border-width: 2px;
@@ -48,18 +49,23 @@
 .profile__edit-button:hover {
   opacity: 80%;
 }
-
+.profile__edit-button:active {
+  transform: scale(0.9);
+}
 .profile__add-button {
   margin: 25px 0 0 105px;
   width: 150px;
   height: 50px;
-  background-color: black;
   border-width: 2px;
   border-style: solid;
   border-color: white;
   cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5) inset;
+  background-color: transparent;
 }
-
+.profile__add-button:active {
+  transform: scale(0.9);
+}
 .profile__add-button:hover {
   opacity: 80%;
 }
@@ -90,7 +96,7 @@
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
   .profile {
     margin: auto;
     flex-direction: column;

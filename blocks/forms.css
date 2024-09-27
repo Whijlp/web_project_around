@@ -65,13 +65,21 @@
   border: none;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 426px) {
   .forms {
     padding: 25px 0 0;
-    background-color: white;
     width: 282px;
     height: 322px;
   }
+  .forms__title {
+    margin-left: 22px;
+  }
+  .forms__submit-button {
+    width: 238px;
+    margin-left: 22px;
+  }
+}
+@media screen and (max-width: 320px) {
   .forms__submit-button {
     margin-left: 22px;
     width: 238px;
