@@ -56,6 +56,7 @@ function createCard(item) {
   const trashCard = card.querySelector(".element__trash");
 
   cardImg.src = item.link;
+  cardImg.alt = item.name;
   cardDescription.textContent = item.name;
 
   cardImg.addEventListener("click", () => {
