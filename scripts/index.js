@@ -63,6 +63,7 @@ function createCard(item) {
     dialogPopup.showModal();
 
     dialogImge.src = item.link;
+    dialogImge.alt = item.name;
     dialogDescription.textContent = item.name;
   });
 
