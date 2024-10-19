@@ -3,12 +3,13 @@ const openNewPlacePopup = document.querySelector(".profile__add-button");
 const formsPopup = document.querySelector(".popup");
 const formsPopupNewPlaces = document.querySelector("#popup__new-places");
 const closeProfilePopup = document.querySelector(".forms__close-button");
+const closeFormProfil = document.querySelector(".forms-profile-button");
 const closePlacePopup = document.querySelector("#place-close-button");
 const overlayContainer = document.querySelector(".popup__overlay");
 const formElement = document.querySelector("#perfil-button");
-const nameInput = document.getElementById("nombre");
 const jobInput = document.getElementById("job_info");
 const nameElement = document.querySelector(".profile__title");
+const namePhotoElement = document.querySelector(".forms__title");
 const jobElement = document.querySelector(".profile__subtitle");
 const likeOff = document.querySelector(".element__like");
 const dialogPopup = document.querySelector(".popup_dialog");
@@ -18,6 +19,10 @@ const closeImgPopup = document.querySelector(".popup__close-button");
 const createCardForm = document.querySelector("#create-card");
 const titleNewCard = document.querySelector("#titulo");
 const photoNewCard = document.querySelector("#photo_info");
+const formEditProfile = document.querySelector("#form_edit-profile");
+const nameInput = formEditProfile.querySelector("#nombre");
+const createCardButton = document.querySelector("#create-button");
+const overlayPopup = document.querySelector(".popup__overlay");
 
 const initialCards = [
   {
@@ -61,7 +66,6 @@ function createCard(item) {
 
   cardImg.addEventListener("click", () => {
     dialogPopup.showModal();
-
     dialogImge.src = item.link;
     dialogImge.alt = item.name;
     dialogDescription.textContent = item.name;
@@ -82,6 +86,10 @@ function createCard(item) {
   cardContainer.prepend(card);
 }
 
+initialCards.forEach((item) => {
+  createCard(item);
+});
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   nameElement.textContent = nameInput.value;
@@ -92,6 +100,7 @@ function handleProfileFormSubmit(evt) {
 function handleOpenPopup() {
   formsPopup.classList.add("popup__show");
   fillFormInputs();
+  validProfile();
   overlayContainer.classList.add("overlay_show");
 }
 
@@ -104,17 +113,20 @@ function handleClosePopup(evt) {
 function fillFormInputs() {
   nameInput.value = nameElement.textContent;
   jobInput.value = jobElement.textContent;
+  titleNewCard.value = namePhotoElement.textContent;
+  photoNewCard.value = "Enlace de la imagen";
 }
-
-initialCards.forEach((item) => {
-  createCard(item);
-});
+fillFormInputs();
 
 openProfilePopup.addEventListener("click", handleOpenPopup);
 
 closeProfilePopup.addEventListener("click", handleClosePopup);
 
+closeFormProfil.addEventListener("click", handleClosePopup);
+
 formElement.addEventListener("click", handleProfileFormSubmit);
+
+overlayPopup.addEventListener("click", handleClosePopup);
 
 openNewPlacePopup.addEventListener("click", () => {
   formsPopupNewPlaces.showModal();
@@ -132,8 +144,59 @@ createCardForm.addEventListener("submit", (evt) => {
 });
 
 dialogPopup.addEventListener("click", (evt) => {
+  evt.preventDefault();
   if (evt.target.className === "popup_dialog") {
     dialogPopup.close();
-    console.log("cierra");
   }
 });
+
+formsPopupNewPlaces.addEventListener("click", (evt) => {
+  evt.preventDefault();
+  if (evt.target.className === "form__dialog") {
+    formsPopupNewPlaces.close();
+  }
+});
+
+function validProfile() {
+  const jobInfoError = document.querySelector("#job_info-error");
+  jobInfoError.classList.remove("form__input-error-invalid");
+  const nombreError = document.querySelector("#nombre-error");
+  nombreError.classList.remove("form__input-error-invalid");
+
+  if (nameInput.checkValidity() && jobInput.checkValidity()) {
+    formElement.disabled = false;
+  } else {
+    formElement.disabled = true;
+    if (!jobInput.checkValidity()) {
+      jobInfoError.classList.add("form__input-error-invalid");
+    }
+    if (!nameInput.checkValidity()) {
+      nombreError.classList.add("form__input-error-invalid");
+    }
+  }
+}
+nameInput.addEventListener("input", validProfile);
+jobInput.addEventListener("input", validProfile);
+validProfile();
+
+function validCard() {
+  const titleCardError = document.querySelector("#form__title-error");
+  titleCardError.classList.remove("form__input-error-card-invalid");
+  const urlCardError = document.querySelector("#form__url-error");
+  urlCardError.classList.remove("form__input-error-card-invalid");
+
+  if (titleNewCard.checkValidity() && photoNewCard.checkValidity()) {
+    createCardButton.disabled = false;
+  } else {
+    createCardButton.disabled = true;
+    if (!photoNewCard.checkValidity()) {
+      urlCardError.classList.add("form__input-error-card-invalid");
+    }
+    if (!titleNewCard.checkValidity()) {
+      titleCardError.classList.add("form__input-error-card-invalid");
+    }
+  }
+}
+titleNewCard.addEventListener("input", validCard);
+photoNewCard.addEventListener("input", validCard);
+validCard();

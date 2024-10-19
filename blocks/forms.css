@@ -39,6 +39,13 @@
   text-align: center;
   cursor: pointer;
 }
+
+.forms__submit-button:disabled {
+  background-color: gray;
+  color: white;
+  cursor: not-allowed;
+}
+
 .forms__submit-button:hover {
   opacity: 80%;
 }
@@ -57,6 +64,12 @@
 
 .forms__close-button:hover {
   opacity: 80%;
+}
+
+.forms__close-buttondisabled {
+  background-color: gray;
+  color: white;
+  cursor: not-allowed;
 }
 
 .forms__image-button {

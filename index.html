@@ -51,7 +51,7 @@
                 <p class="element__title"></p>
                 <div class="element__like"></div>
                 <button class="element__trash" title="eliminar">
-                  <img src="./images/Trash.png" alt="imane dee basurera" />
+                  <img src="./images/Trash.png" alt="imagen de basurera" />
                 </button>
               </div>
             </div>
@@ -74,22 +74,34 @@
             <form class="form" id="create-card">
               <fieldset class="form__edit">
                 <input
+                  required
                   class="form__input"
                   type="text"
                   id="titulo"
                   placeholder="Titulo"
+                  minlength="2"
+                  maxlength="30"
                 />
+                <span id="form__title-error" class="form__input-error-card"
+                  >El campo "Título" debe contener entre 2 y 30 caracteres</span
+                >
                 <input
+                  required
                   class="form__input"
                   type="text"
                   id="photo_info"
                   placeholder="Enlace de la imagen"
                 />
+                <span id="form__url-error" class="form__input-error-card"
+                  >El campo "URL de la imagen" debe contener una URL</span
+                >
               </fieldset>
               <button
+                disabled
                 class="forms__submit-button"
                 type="submit"
                 title="Crear tarjeta nueva "
+                id="create-button"
               >
                 Crear
               </button>
@@ -97,6 +109,7 @@
                 class="forms__close-button"
                 id="place-close-button"
                 title="cerrar"
+                type="button"
               >
                 <img
                   class="forms__image-button"
@@ -111,29 +124,46 @@
           <div class="popup__overlay"></div>
           <div class="forms">
             <h2 class="forms__title">Editar perfil</h2>
-            <form class="form">
+            <form class="form" id="form_edit-profile">
               <fieldset class="form__edit">
                 <input
+                  required
                   class="form__input"
                   type="text"
                   id="nombre"
                   placeholder="Nombre"
+                  minlength="2"
+                  maxlength="40"
                 />
+                <span id="nombre-error" class="form__input-error"
+                  >Este campo es obligatorio</span
+                >
                 <input
+                  required
                   class="form__input"
                   type="text"
                   id="job_info"
                   placeholder="Acerca de mi"
+                  minlength="2"
+                  maxlength="200"
                 />
+                <span id="job_info-error" class="form__input-error"
+                  >Debe tener entre 2 y 200 caracteres</span
+                >
               </fieldset>
               <button
+                disabled
                 class="forms__submit-button"
                 id="perfil-button"
                 title="Guardar cambios"
               >
                 Guardar
               </button>
-              <button class="forms__close-button" title="cerrar">
+              <button
+                class="forms__close-button forms-profile-button"
+                title="cerrar"
+                type="button"
+              >
                 <img
                   class="forms__image-button"
                   src="./images/formn_image.svg"
