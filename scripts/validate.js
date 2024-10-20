@@ -1,5 +1,5 @@
 const settingsValidation = {
-  formSelector: ".form",
+  formSelector: ".forms",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
   inactiveButtonClass: "popup__button_disabled",
@@ -9,10 +9,10 @@ const settingsValidation = {
 
 const enableValidation = () => {
   const formList = document.querySelectorAll(settings.formSelector);
+  formList.forEach((formElement) => {});
 };
 
-/*
-function validProfile() {
+/*function validProfile() {
   const jobInfoError = document.querySelector("#job_info-error");
   jobInfoError.classList.remove("form__input-error-invalid");
   const nombreError = document.querySelector("#nombre-error");
@@ -54,4 +54,5 @@ function validCard() {
 }
 titleNewCard.addEventListener("input", validCard);
 photoNewCard.addEventListener("input", validCard);
-validCard();*/
+validCard();
+*/

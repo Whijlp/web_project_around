@@ -20,7 +20,7 @@ const createCardForm = document.querySelector("#create-card");
 const titleNewCard = document.querySelector("#titulo");
 const photoNewCard = document.querySelector("#photo_info");
 const formEditProfile = document.querySelector("#form_edit-profile");
-const nameInput = formEditProfile.querySelector("#nombre");
+const nameInput = document.getElementById("nombre");
 const createCardButton = document.querySelector("#create-button");
 const overlayPopup = document.querySelector(".popup__overlay");
 
@@ -99,8 +99,6 @@ function handleProfileFormSubmit(evt) {
 
 function handleOpenPopup() {
   formsPopup.classList.add("popup__show");
-  fillFormInputs();
-  validProfile();
   overlayContainer.classList.add("overlay_show");
 }
 
