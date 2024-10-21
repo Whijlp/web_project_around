@@ -1,18 +1,32 @@
 const settingsValidation = {
-  formSelector: ".forms",
-  inputSelector: ".popup__input",
+  formSelector: ".form",
+  inputSelector: ".form__input",
   submitButtonSelector: ".popup__button",
   inactiveButtonClass: "popup__button_disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
 
-const enableValidation = () => {
+const enableValidation = (settings) => {
   const formList = document.querySelectorAll(settings.formSelector);
-  formList.forEach((formElement) => {});
-};
 
-/*function validProfile() {
+  formList.forEach((formElement) => {
+    const inputList = formElement.querySelectorAll(settings.inputSelector);
+
+    inputList.forEach((inputElement) => {
+      const errorElement = formElement.querySelector(
+        `#${inputElement.name}-error`
+      );
+      inputElement.addEventListener("input", () => {
+        errorElement.textContent = inputElement.validationMessage;
+        console.log("pip");
+      });
+    });
+  });
+};
+enableValidation(settingsValidation);
+
+/* function validProfile() {
   const jobInfoError = document.querySelector("#job_info-error");
   jobInfoError.classList.remove("form__input-error-invalid");
   const nombreError = document.querySelector("#nombre-error");
@@ -39,6 +53,7 @@ function validCard() {
   titleCardError.classList.remove("form__input-error-card-invalid");
   const urlCardError = document.querySelector("#form__url-error");
   urlCardError.classList.remove("form__input-error-card-invalid");
+  const jobInput = document.getElementById("job_info");
 
   if (titleNewCard.checkValidity() && photoNewCard.checkValidity()) {
     createCardButton.disabled = false;

@@ -1,3 +1,5 @@
+import "./validate.js";
+
 const openProfilePopup = document.querySelector(".profile__edit-button");
 const openNewPlacePopup = document.querySelector(".profile__add-button");
 const formsPopup = document.querySelector(".popup");
@@ -11,7 +13,6 @@ const jobInput = document.getElementById("job_info");
 const nameElement = document.querySelector(".profile__title");
 const namePhotoElement = document.querySelector(".forms__title");
 const jobElement = document.querySelector(".profile__subtitle");
-const likeOff = document.querySelector(".element__like");
 const dialogPopup = document.querySelector(".popup_dialog");
 const cardTemplate = document.querySelector("#card-template");
 const cardContainer = document.querySelector(".elements");
@@ -20,8 +21,7 @@ const createCardForm = document.querySelector("#create-card");
 const titleNewCard = document.querySelector("#titulo");
 const photoNewCard = document.querySelector("#photo_info");
 const formEditProfile = document.querySelector("#form_edit-profile");
-const nameInput = document.getElementById("nombre");
-const createCardButton = document.querySelector("#create-button");
+const nameInput = formEditProfile.querySelector("#nombre");
 const overlayPopup = document.querySelector(".popup__overlay");
 
 const initialCards = [
@@ -135,22 +135,22 @@ closePlacePopup.addEventListener("click", (evt) => {
   formsPopupNewPlaces.close();
 });
 
-createCardForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  createCard({ link: photoNewCard.value, name: titleNewCard.value });
-  formsPopupNewPlaces.close();
-});
-
 dialogPopup.addEventListener("click", (evt) => {
-  evt.preventDefault();
   if (evt.target.className === "popup_dialog") {
+    evt.preventDefault();
     dialogPopup.close();
   }
 });
 
 formsPopupNewPlaces.addEventListener("click", (evt) => {
-  evt.preventDefault();
   if (evt.target.className === "form__dialog") {
+    evt.preventDefault();
     formsPopupNewPlaces.close();
   }
+});
+
+createCardForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  createCard({ link: photoNewCard.value, name: titleNewCard.value });
+  formsPopupNewPlaces.close();
 });

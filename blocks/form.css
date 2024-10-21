@@ -19,9 +19,11 @@
   text-align: left;
   margin: 30px 0 0 0;
 }
+
 .form__input:invalid {
   border-color: red;
 }
+
 .form__input-error {
   display: none;
   font-size: 0.8em;
@@ -45,8 +47,7 @@
 .form__input-error-card:invalid {
   border-color: red;
 }
-
-.form__input[type="text"] {
+*/ .form__input[type="text"] {
   border-bottom: 2px solid rgba(128, 128, 128, 0.708);
 }
 
