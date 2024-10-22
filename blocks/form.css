@@ -12,6 +12,7 @@
   width: 358px;
   height: 27px;
   border: none;
+  border-bottom: 2px solid rgba(128, 128, 128, 0.708);
   font-family: "Inter";
   font-size: 14px;
   font-weight: 400;
@@ -20,35 +21,10 @@
   margin: 30px 0 0 0;
 }
 
-.form__input:invalid {
-  border-color: red;
-}
-
 .form__input-error {
-  display: none;
-  font-size: 0.8em;
-}
-
-.form__input-error-invalid {
-  display: block;
   color: red;
-}
-
-.form__input-error-card {
-  display: none;
+  border-bottom: 2px solid red;
   font-size: 0.8em;
-}
-
-.form__input-error-card-invalid {
-  display: block;
-  color: red;
-}
-
-.form__input-error-card:invalid {
-  border-color: red;
-}
-*/ .form__input[type="text"] {
-  border-bottom: 2px solid rgba(128, 128, 128, 0.708);
 }
 
 @media screen and (max-width: 426px) {

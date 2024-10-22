@@ -126,6 +126,8 @@ formElement.addEventListener("click", handleProfileFormSubmit);
 
 overlayPopup.addEventListener("click", handleClosePopup);
 
+//overlayPopup.addEventListener("keydown", handleClosePopup);
+
 openNewPlacePopup.addEventListener("click", () => {
   formsPopupNewPlaces.showModal();
 });
@@ -135,6 +137,13 @@ closePlacePopup.addEventListener("click", (evt) => {
   formsPopupNewPlaces.close();
 });
 
+/*formsPopupNewPlaces.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    evt.preventDefault();
+    formsPopupNewPlaces.close();
+  }
+});
+*/
 dialogPopup.addEventListener("click", (evt) => {
   if (evt.target.className === "popup_dialog") {
     evt.preventDefault();

@@ -75,6 +75,7 @@
               <fieldset class="form__edit">
                 <input
                   required
+                  name="titulo"
                   class="form__input"
                   type="text"
                   id="titulo"
@@ -82,19 +83,24 @@
                   minlength="2"
                   maxlength="30"
                 />
-                <span id="form__title-error" class="form__input-error-card"
-                  >El campo "Título" debe contener entre 2 y 30 caracteres</span
-                >
+                <span
+                  name="titulo-error"
+                  id="titulo-error"
+                  class="form__input-error"
+                ></span>
                 <input
                   required
+                  name="photo_info"
                   class="form__input"
                   type="url"
                   id="photo_info"
                   placeholder="Enlace de la imagen"
                 />
-                <span id="form__url-error" class="form__input-error-card"
-                  >El campo "URL de la imagen" debe contener una URL</span
-                >
+                <span
+                  name="photo_info-error"
+                  id="photo_info-error"
+                  class="form__input-error"
+                ></span>
               </fieldset>
               <button
                 class="forms__submit-button"
@@ -131,25 +137,30 @@
                   class="form__input"
                   type="text"
                   id="nombre"
-                  placeholder="Nombre"
+                  placeholder="Whiter landiez"
                   minlength="2"
                   maxlength="40"
                 />
-                <span id="name-error" class="form__input-error"
-                  >Este campo es obligatorio</span
-                >
+                <span
+                  name="name-error"
+                  id="name-error"
+                  class="form__input-error"
+                ></span>
                 <input
                   required
                   class="form__input"
                   type="text"
                   id="job_info"
-                  placeholder="Acerca de mi"
+                  name="job_info"
+                  placeholder="Piloto de Moto velocidad"
                   minlength="2"
                   maxlength="200"
                 />
-                <span id="job_info-error" class="form__input-error"
-                  >Debe tener entre 2 y 200 caracteres</span
-                >
+                <span
+                  name="job_info-error"
+                  id="job_info-error"
+                  class="form__input-error"
+                ></span>
               </fieldset>
               <button
                 class="forms__submit-button"
