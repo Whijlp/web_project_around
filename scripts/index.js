@@ -1,4 +1,4 @@
-import "./validate.js";
+import { resetFormValidation, settingsValidation } from "./validate.js";
 
 const openProfilePopup = document.querySelector(".profile__edit-button");
 const openNewPlacePopup = document.querySelector(".profile__add-button");
@@ -20,10 +20,9 @@ const closeImgPopup = document.querySelector(".popup__close-button");
 const createCardForm = document.querySelector("#create-card");
 const titleNewCard = document.querySelector("#titulo");
 const photoNewCard = document.querySelector("#photo_info");
-const formEditProfile = document.querySelector("#form_edit-profile");
+const formEditProfile = document.getElementById("form_edit-profile");
 const nameInput = formEditProfile.querySelector("#nombre");
-const overlayPopup = document.querySelector(".popup__overlay");
-
+const formList = document.querySelectorAll(".form");
 const initialCards = [
   {
     name: "Tiger 900",
@@ -102,10 +101,29 @@ function handleOpenPopup() {
   overlayContainer.classList.add("overlay_show");
 }
 
+function resetFillImput() {
+  formEditProfile.reset();
+  nameInput.value = nameElement.textContent;
+  jobInput.value = jobElement.textContent;
+  console.log("fill");
+}
+
+function resetFillCard() {
+  createCardForm.reset();
+  titleNewCard.value = namePhotoElement.textContent;
+  photoNewCard.value = "https://www.ejemplo.com";
+  console.log("full");
+}
+
 function handleClosePopup(evt) {
   evt.preventDefault();
   formsPopup.classList.remove("popup__show");
   overlayContainer.classList.remove("overlay_show");
+  resetFillImput(evt);
+  resetFillCard(evt);
+  formsPopupNewPlaces.close();
+  dialogPopup.close();
+  resetFormValidation(settingsValidation);
 }
 
 function fillFormInputs() {
@@ -124,9 +142,14 @@ closeFormProfil.addEventListener("click", handleClosePopup);
 
 formElement.addEventListener("click", handleProfileFormSubmit);
 
-overlayPopup.addEventListener("click", handleClosePopup);
+overlayContainer.addEventListener("click", handleClosePopup);
 
-//overlayPopup.addEventListener("keydown", handleClosePopup);
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    handleClosePopup(evt);
+    console.log("cierra");
+  }
+});
 
 openNewPlacePopup.addEventListener("click", () => {
   formsPopupNewPlaces.showModal();
@@ -135,15 +158,9 @@ openNewPlacePopup.addEventListener("click", () => {
 closePlacePopup.addEventListener("click", (evt) => {
   evt.preventDefault();
   formsPopupNewPlaces.close();
+  handleClosePopup(evt);
 });
 
-/*formsPopupNewPlaces.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    evt.preventDefault();
-    formsPopupNewPlaces.close();
-  }
-});
-*/
 dialogPopup.addEventListener("click", (evt) => {
   if (evt.target.className === "popup_dialog") {
     evt.preventDefault();
@@ -155,6 +172,7 @@ formsPopupNewPlaces.addEventListener("click", (evt) => {
   if (evt.target.className === "form__dialog") {
     evt.preventDefault();
     formsPopupNewPlaces.close();
+    handleClosePopup(evt);
   }
 });
 

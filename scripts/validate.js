@@ -1,4 +1,4 @@
-const settingsValidation = {
+export const settingsValidation = {
   formSelector: ".form",
   inputSelector: ".form__input",
   submitButtonSelector: ".forms__submit-button",
@@ -35,3 +35,21 @@ const enableValidation = (settings) => {
   });
 };
 enableValidation(settingsValidation);
+
+export function resetFormValidation(settings) {
+  const formList = document.querySelectorAll(settings.formSelector);
+  formList.forEach((formElement) => {
+    const submitButton = formElement.querySelector(
+      settings.submitButtonSelector
+    );
+    const inputList = formElement.querySelectorAll(settings.inputSelector);
+    inputList.forEach((inputElement) => {
+      const errorElement = formElement.querySelector(
+        `#${inputElement.name}-error`
+      );
+      inputElement.classList.remove(settings.inputErrorClass);
+      submitButton.disabled = true;
+      errorElement.textContent = "";
+    });
+  });
+}
