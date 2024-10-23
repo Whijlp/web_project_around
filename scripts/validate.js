@@ -7,6 +7,16 @@ export const settingsValidation = {
   errorClass: "popup__error_visible",
 };
 
+const showError = (inputElement, errorElement, settings) => {
+  errorElement.textContent = inputElement.validationMessage;
+  inputElement.classList.add(settings.inputErrorClass);
+};
+
+const hideError = (inputElement, errorElement, settings) => {
+  inputElement.classList.remove(settings.inputErrorClass);
+  errorElement.textContent = "";
+};
+
 const enableValidation = (settings) => {
   const formList = document.querySelectorAll(settings.formSelector);
 
@@ -19,16 +29,13 @@ const enableValidation = (settings) => {
       const errorElement = formElement.querySelector(
         `#${inputElement.name}-error`
       );
-
       inputElement.addEventListener("input", () => {
         if (!inputElement.checkValidity()) {
-          errorElement.textContent = inputElement.validationMessage;
-          inputElement.classList.add(settings.inputErrorClass);
+          showError(inputElement, errorElement, settings);
           submitButton.disabled = true;
         } else {
-          inputElement.classList.remove(settings.inputErrorClass);
+          hideError(inputElement, errorElement, settings);
           submitButton.disabled = false;
-          errorElement.textContent = "";
         }
       });
     });
@@ -47,9 +54,8 @@ export function resetFormValidation(settings) {
       const errorElement = formElement.querySelector(
         `#${inputElement.name}-error`
       );
-      inputElement.classList.remove(settings.inputErrorClass);
+      hideError(inputElement, errorElement, settings);
       submitButton.disabled = true;
-      errorElement.textContent = "";
     });
   });
 }
