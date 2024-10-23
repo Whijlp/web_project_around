@@ -12,10 +12,6 @@
   transform: scale(1.09);
 }
 
-.element:hover .element__image {
-  transform: scale(1.1);
-}
-
 .element__image {
   width: 282px;
   height: 282px;
@@ -64,10 +60,19 @@
   right: 15px;
   height: 19px;
   cursor: pointer;
+  width: 35px;
+  height: 35px;
+  z-index: 40;
 }
 
 .element__trash:hover {
   opacity: 70%;
+}
+
+@media screen and (min-width: 1020px) {
+  .element:hover .element__image {
+    transform: scale(1.1);
+  }
 }
 
 @media screen and (max-width: 768px) {
