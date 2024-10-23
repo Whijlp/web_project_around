@@ -105,14 +105,12 @@ function resetFillImput() {
   formEditProfile.reset();
   nameInput.value = nameElement.textContent;
   jobInput.value = jobElement.textContent;
-  console.log("fill");
 }
 
 function resetFillCard() {
   createCardForm.reset();
   titleNewCard.value = namePhotoElement.textContent;
   photoNewCard.value = "https://www.ejemplo.com";
-  console.log("full");
 }
 
 function handleClosePopup(evt) {
