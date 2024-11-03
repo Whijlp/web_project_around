@@ -1,4 +1,4 @@
-import { resetFormValidation, settingsValidation } from "./validate.js";
+import { enableValidation, resetFormValidation } from "./validate.js";
 import Card from "./Card.js";
 import { initialCards, openImage } from "./utils.js";
 
@@ -33,10 +33,15 @@ initialCards.forEach((item) => {
 
 createCardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  const card = new Card({
-    link: photoNewCard.value,
-    name: titleNewCard.value,
-  });
+  const card = new Card(
+    {
+      link: photoNewCard.value,
+      name: titleNewCard.value,
+    },
+    openImage
+  );
+  const cardElement = card.getCard();
+  cardContainer.prepend(cardElement);
   formsPopupNewPlaces.close();
 });
 
@@ -79,6 +84,9 @@ function fillFormInputs() {
   photoNewCard.value = "https://www.ejemplo.com";
 }
 fillFormInputs();
+
+//const validateForm = new FormValidator(settingsValidation, formEditProfile);
+// validateForm.enableValidation();
 
 openProfilePopup.addEventListener("click", handleOpenPopup);
 

@@ -2,7 +2,7 @@ export default class Card {
   constructor(data, openImage) {
     this._name = data.name;
     this._link = data.link;
-    this.openImage = openImage;
+    this._openImage = openImage;
   }
 
   _getElement() {
@@ -13,7 +13,7 @@ export default class Card {
       .cloneNode(true);
   }
 
-  setProperties() {
+  _setProperties() {
     this.element = this._getElement();
 
     this.cardImage = this.element.querySelector(".element__image");
@@ -31,40 +31,40 @@ export default class Card {
     this.cardDescription.textContent = this._name;
   }
 
-  toogleLike() {
+  _toogleLike() {
     this.likeButton.classList.toggle("element__like-active");
   }
 
-  removeCard() {
+  _removeCard() {
     console.log(this.element);
     this.element.remove();
   }
 
-  closePopup() {
+  _closePopup() {
     this.dialogImg.close();
   }
 
   setEventsListeners() {
     this.likeButton.addEventListener("click", () => {
-      this.toogleLike();
+      this._toogleLike();
     });
 
     this.trashCard.addEventListener("click", () => {
       console.log("pip");
-      this.removeCard();
+      this._removeCard();
     });
 
     this.closeButtonPopup.addEventListener("click", () => {
-      this.closePopup();
+      this._closePopup();
     });
 
     this.cardImage.addEventListener("click", () => {
       const item = { name: this._name, link: this._link };
-      this.openImage(item);
+      this._openImage(item);
     });
   }
   getCard() {
-    this.setProperties();
+    this._setProperties();
     this.setEventsListeners();
     return this.element;
   }

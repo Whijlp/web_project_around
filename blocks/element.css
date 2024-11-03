@@ -62,7 +62,7 @@
   cursor: pointer;
   width: 35px;
   height: 35px;
-  z-index: 40;
+  z-index: 1;
 }
 
 .element__trash:hover {
