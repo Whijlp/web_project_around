@@ -66,12 +66,6 @@
   opacity: 80%;
 }
 
-.forms__close-buttondisabled {
-  background-color: gray;
-  color: white;
-  cursor: not-allowed;
-}
-
 .forms__image-button {
   display: flex;
   margin: auto;

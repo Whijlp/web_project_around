@@ -1,4 +1,4 @@
-import { enableValidation, resetFormValidation } from "./validate.js";
+import { settingsValidation, FormValidator } from "./FormValidate.js";
 import Card from "./Card.js";
 import { initialCards, openImage } from "./utils.js";
 
@@ -24,6 +24,7 @@ const titleNewCard = document.querySelector("#titulo");
 const photoNewCard = document.querySelector("#photo_info");
 const formEditProfile = document.getElementById("form_edit-profile");
 const nameInput = formEditProfile.querySelector("#nombre");
+const inputForm = document.querySelectorAll(".form__input");
 
 initialCards.forEach((item) => {
   const card = new Card(item, openImage);
@@ -45,6 +46,18 @@ createCardForm.addEventListener("submit", (evt) => {
   formsPopupNewPlaces.close();
 });
 
+const validateFormProfile = new FormValidator(
+  settingsValidation,
+  formEditProfile
+);
+validateFormProfile.enableValidation();
+
+const validateFormNewBike = new FormValidator(
+  settingsValidation,
+  createCardForm
+);
+validateFormNewBike.enableValidation();
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   nameElement.textContent = nameInput.value;
@@ -60,7 +73,8 @@ function handleClosePopup(evt) {
   resetFillCard(evt);
   formsPopupNewPlaces.close();
   dialogPopup.close();
-  resetFormValidation(settingsValidation);
+  validateFormProfile._resetForm();
+  validateFormNewBike._resetForm();
 }
 function resetFillImput() {
   formEditProfile.reset();
@@ -84,9 +98,6 @@ function fillFormInputs() {
   photoNewCard.value = "https://www.ejemplo.com";
 }
 fillFormInputs();
-
-//const validateForm = new FormValidator(settingsValidation, formEditProfile);
-// validateForm.enableValidation();
 
 openProfilePopup.addEventListener("click", handleOpenPopup);
 
