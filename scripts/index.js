@@ -1,4 +1,4 @@
-import { settingsValidation, FormValidator } from "./FormValidate.js";
+import FormValidator from "./FormValidate.js";
 import Card from "./Card.js";
 import {
   initialCards,
@@ -18,6 +18,15 @@ const titleNewCard = document.querySelector("#titulo");
 const photoNewCard = document.querySelector("#photo_info");
 const formEditProfile = document.getElementById("form_edit-profile");
 const nameInput = formEditProfile.querySelector("#nombre");
+
+const settingsValidation = {
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".forms__submit-button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "form__input-error",
+  errorClass: "popup__error_visible",
+};
 
 initialCards.forEach((item) => {
   const card = new Card(item, openImage);

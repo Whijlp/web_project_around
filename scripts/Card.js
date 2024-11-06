@@ -36,7 +36,6 @@ export default class Card {
   }
 
   _removeCard() {
-    console.log(this.element);
     this.element.remove();
   }
 
@@ -50,7 +49,6 @@ export default class Card {
     });
 
     this.trashCard.addEventListener("click", () => {
-      console.log("pip");
       this._removeCard();
     });
 

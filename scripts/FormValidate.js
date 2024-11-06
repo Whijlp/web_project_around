@@ -1,21 +1,10 @@
-export const settingsValidation = {
-  formSelector: ".form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".forms__submit-button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "form__input-error",
-  errorClass: "popup__error_visible",
-};
-
-export class FormValidator {
+export default class FormValidator {
   constructor(formValid, formElement) {
     this._formValid = formValid;
     this._formElement = formElement;
   }
 
   _showError(inputElement, errorElement, formValid) {
-    console.log(inputElement);
-
     errorElement.textContent = inputElement.validationMessage;
     inputElement.classList.add(formValid.inputErrorClass);
   }
@@ -29,8 +18,6 @@ export class FormValidator {
       `#${inputElement.name}-error`
     );
     if (!inputElement.checkValidity()) {
-      console.log("pip");
-
       this._showError(inputElement, errorElement, formValid);
     } else {
       this._hideError(inputElement, errorElement, formValid);

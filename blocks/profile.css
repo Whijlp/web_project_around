@@ -2,6 +2,10 @@
   display: flex;
   justify-content: space-between;
 }
+.profile__info-container {
+  flex-grow: 1;
+}
+
 .profile__info {
   display: flex;
   text-overflow: ellipsis;

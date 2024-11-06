@@ -1,3 +1,5 @@
+import { validateFormNewBike, validateFormProfile } from "./index.js";
+
 const dialogPopup = document.querySelector(".popup_dialog");
 const formsPopup = document.querySelector(".popup");
 const overlayContainer = document.querySelector(".popup__overlay");
@@ -93,4 +95,3 @@ document.addEventListener("keydown", (evt) => {
     handleClosePopup(evt);
   }
 });
-import { validateFormNewBike, validateFormProfile } from "./index.js";
