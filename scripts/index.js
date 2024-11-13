@@ -1,4 +1,4 @@
-import FormValidator from "./FormValidate.js";
+import FormValidator from "../components/FormValidate.js";
 import Card from "../components/Card.js";
 import {
   initialCards,
@@ -7,6 +7,7 @@ import {
   handleClosePopup,
 } from "./utils.js";
 import Section from "../components/Section.js";
+
 const formsPopupNewPlaces = document.querySelector("#popup__new-places");
 const formElement = document.querySelector("#perfil-button");
 const jobInput = document.getElementById("job_info");
@@ -29,15 +30,16 @@ const settingsValidation = {
 };
 
 const renderCard = new Section(
-  { items: initialCards, renderer: (carditems) => {} },
-  cardContainer
+  {
+    items: initialCards,
+    renderer: (cardItems) => {
+      const card = new Card(cardItems, openImage);
+      return card.getCard();
+    },
+  },
+  ".elements"
 );
-
-/*initialCards.forEach((item) => {
-  const card = new Card(item, openImage);
-  const cardElement = card.getCard();
-  cardContainer.prepend(cardElement);
-});*/
+renderCard.renderer();
 
 createCardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
