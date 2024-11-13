@@ -1,12 +1,12 @@
 import FormValidator from "./FormValidate.js";
-import Card from "./Card.js";
+import Card from "../components/Card.js";
 import {
   initialCards,
   openImage,
   handleOpenPopup,
   handleClosePopup,
 } from "./utils.js";
-
+import Section from "../components/Section.js";
 const formsPopupNewPlaces = document.querySelector("#popup__new-places");
 const formElement = document.querySelector("#perfil-button");
 const jobInput = document.getElementById("job_info");
@@ -28,11 +28,16 @@ const settingsValidation = {
   errorClass: "popup__error_visible",
 };
 
-initialCards.forEach((item) => {
+const renderCard = new Section(
+  { items: initialCards, renderer: (carditems) => {} },
+  cardContainer
+);
+
+/*initialCards.forEach((item) => {
   const card = new Card(item, openImage);
   const cardElement = card.getCard();
   cardContainer.prepend(cardElement);
-});
+});*/
 
 createCardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
