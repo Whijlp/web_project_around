@@ -45,11 +45,13 @@ export function openImage(item) {
   dialogImge.alt = item.name;
   dialogDescription.textContent = item.name;
 }
+/*
 export function handleOpenPopup() {
   formsPopup.classList.add("popup__show");
   overlayContainer.classList.add("overlay_show");
 }
-export function handleClosePopup(evt) {
+  */
+/*export function handleClosePopup(evt) {
   evt.preventDefault();
   formsPopup.classList.remove("popup__show");
   overlayContainer.classList.remove("overlay_show");
@@ -59,7 +61,7 @@ export function handleClosePopup(evt) {
   validateFormNewBike._resetForm();
 }
 
-openProfilePopup.addEventListener("click", handleOpenPopup);
+//openProfilePopup.addEventListener("click", handleOpenPopup);
 
 closeProfilePopup.addEventListener("click", handleClosePopup);
 
@@ -94,4 +96,4 @@ document.addEventListener("keydown", (evt) => {
   if (evt.key === "Escape") {
     handleClosePopup(evt);
   }
-});
+});*/

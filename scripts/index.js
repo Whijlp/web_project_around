@@ -3,10 +3,11 @@ import Card from "../components/Card.js";
 import {
   initialCards,
   openImage,
-  handleOpenPopup,
-  handleClosePopup,
+  //handleOpenPopup,
+  //handleClosePopup,
 } from "./utils.js";
 import Section from "../components/Section.js";
+import Popup from "../components/Popup.js";
 
 const formsPopupNewPlaces = document.querySelector("#popup__new-places");
 const formElement = document.querySelector("#perfil-button");
@@ -19,6 +20,11 @@ const titleNewCard = document.querySelector("#titulo");
 const photoNewCard = document.querySelector("#photo_info");
 const formEditProfile = document.getElementById("form_edit-profile");
 const nameInput = formEditProfile.querySelector("#nombre");
+const openProfilePopup = document.querySelector(".profile__edit-button");
+const openNewPlacePopup = document.querySelector(".profile__add-button");
+const closeFormProfil = document.querySelector(".forms-profile-button");
+const overlayContainer = document.querySelector(".popup__overlay");
+const closePlacePopup = document.querySelector("#place-close-button");
 
 const settingsValidation = {
   formSelector: ".form",
@@ -40,6 +46,10 @@ const renderCard = new Section(
   ".elements"
 );
 renderCard.renderer();
+//
+
+const popupProfile = new Popup("#popupProfile");
+const popupNewCard = new Popup("#popup__new-places");
 
 createCardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
@@ -71,7 +81,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   nameElement.textContent = nameInput.value;
   jobElement.textContent = jobInput.value;
-  handleClosePopup(evt);
+  popupProfile.close();
 }
 
 formElement.addEventListener("click", handleProfileFormSubmit);

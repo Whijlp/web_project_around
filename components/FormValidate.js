@@ -56,6 +56,7 @@ export default class FormValidator {
     const inputList = Array.from(
       formElement.querySelectorAll(formValid.inputSelector)
     );
+
     const submitButton = formElement.querySelector(
       formValid.submitButtonSelector
     );
