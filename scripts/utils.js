@@ -85,13 +85,7 @@ dialogPopup.addEventListener("click", (evt) => {
   }
 });
 
-formsPopupNewPlaces.addEventListener("click", (evt) => {
-  if (evt.target.className === "form__dialog") {
-    evt.preventDefault();
-    formsPopupNewPlaces.close();
-    handleClosePopup(evt);
-  }
-});
+
 document.addEventListener("keydown", (evt) => {
   if (evt.key === "Escape") {
     handleClosePopup(evt);

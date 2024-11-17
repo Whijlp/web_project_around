@@ -1,30 +1,28 @@
 import FormValidator from "../components/FormValidate.js";
 import Card from "../components/Card.js";
-import {
-  initialCards,
-  openImage,
-  //handleOpenPopup,
-  //handleClosePopup,
-} from "./utils.js";
+import { initialCards, openImage } from "./utils.js";
 import Section from "../components/Section.js";
-import Popup from "../components/Popup.js";
+import PopupWhitForm from "../components/PopupWhitForm.js";
+import PopupWithImage from "../components/PopupWhitImage.js";
+import UserInfo from "../components/UserInfo.js";
 
 const formsPopupNewPlaces = document.querySelector("#popup__new-places");
-const formElement = document.querySelector("#perfil-button");
-const jobInput = document.getElementById("job_info");
-const nameElement = document.querySelector(".profile__title");
-const jobElement = document.querySelector(".profile__subtitle");
+//const formElement = document.querySelector("#perfil-button");
+//const jobInput = document.getElementById("job_info");
+//const nameElement = document.querySelector(".profile__title");
+//const jobElement = document.querySelector(".profile__subtitle");
 const cardContainer = document.querySelector(".elements");
 const createCardForm = document.querySelector("#create-card");
-const titleNewCard = document.querySelector("#titulo");
-const photoNewCard = document.querySelector("#photo_info");
+//const titleNewCard = document.querySelector("#titulo");
+//const photoNewCard = document.querySelector("#photo_info");
 const formEditProfile = document.getElementById("form_edit-profile");
-const nameInput = formEditProfile.querySelector("#nombre");
+//const nameInput = formEditProfile.querySelector("#nombre");
 const openProfilePopup = document.querySelector(".profile__edit-button");
 const openNewPlacePopup = document.querySelector(".profile__add-button");
-const closeFormProfil = document.querySelector(".forms-profile-button");
+//const closeFormProfil = document.querySelector(".forms-profile-button");
 const overlayContainer = document.querySelector(".popup__overlay");
-const closePlacePopup = document.querySelector("#place-close-button");
+
+//const closePlacePopup = document.querySelector("#place-close-button");
 
 const settingsValidation = {
   formSelector: ".form",
@@ -35,6 +33,7 @@ const settingsValidation = {
   errorClass: "popup__error_visible",
 };
 
+// muestra la tajetas pre exitentes
 const renderCard = new Section(
   {
     items: initialCards,
@@ -46,25 +45,36 @@ const renderCard = new Section(
   ".elements"
 );
 renderCard.renderer();
-//
 
-const popupProfile = new Popup("#popupProfile");
-const popupNewCard = new Popup("#popup__new-places");
+//instancia de informacion de usuario
+const userInfo = new UserInfo(".profile__title", ".profile__subtitle");
 
-createCardForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
+//crea las nuevas targetas
+const popupCard = new PopupWhitForm("#popup__new-places", (values) => {
   const card = new Card(
-    {
-      link: photoNewCard.value,
-      name: titleNewCard.value,
-    },
+    { link: values.photo_info, name: values.titulo },
     openImage
   );
-  const cardElement = card.getCard();
-  cardContainer.prepend(cardElement);
   formsPopupNewPlaces.close();
+  cardContainer.prepend(card.getCard());
+  validateFormNewBike._resetForm();
 });
+popupCard.setEventListener();
 
+// Expande la targeta seleccionanda
+const popupWhitImage = new PopupWithImage(".popup_dialog");
+popupWhitImage.setEventListener();
+
+//ediata la informacion de usuario
+const popupEditProfile = new PopupWhitForm("#popupProfile", (data) => {
+  const { job_info, name } = data;
+  userInfo.setUserInfo(name, job_info);
+  popupEditProfile.close();
+  validateFormProfile._resetForm();
+});
+popupEditProfile.setEventListener();
+
+//validacion de los dos formularios
 export const validateFormProfile = new FormValidator(
   settingsValidation,
   formEditProfile
@@ -77,11 +87,11 @@ export const validateFormNewBike = new FormValidator(
 );
 validateFormNewBike.enableValidation();
 
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  nameElement.textContent = nameInput.value;
-  jobElement.textContent = jobInput.value;
-  popupProfile.close();
-}
+// Eventos de click para abrir perfil y nueva tarjeta
+openProfilePopup.addEventListener("click", () => {
+  popupEditProfile.open();
+});
 
-formElement.addEventListener("click", handleProfileFormSubmit);
+openNewPlacePopup.addEventListener("click", () => {
+  popupCard.open();
+});
