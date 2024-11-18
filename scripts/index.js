@@ -1,53 +1,58 @@
-import FormValidator from "./FormValidate.js";
-import Card from "./Card.js";
-import {
-  initialCards,
-  openImage,
-  handleOpenPopup,
-  handleClosePopup,
-} from "./utils.js";
+import FormValidator from "../components/FormValidate.js";
+import Card from "../components/Card.js";
+import { initialCards, openImage, settingsValidation } from "./utils.js";
+import Section from "../components/Section.js";
+import PopupWhitForm from "../components/PopupWhitForm.js";
+import PopupWithImage from "../components/PopupWhitImage.js";
+import UserInfo from "../components/UserInfo.js";
 
 const formsPopupNewPlaces = document.querySelector("#popup__new-places");
-const formElement = document.querySelector("#perfil-button");
-const jobInput = document.getElementById("job_info");
-const nameElement = document.querySelector(".profile__title");
-const jobElement = document.querySelector(".profile__subtitle");
 const cardContainer = document.querySelector(".elements");
 const createCardForm = document.querySelector("#create-card");
-const titleNewCard = document.querySelector("#titulo");
-const photoNewCard = document.querySelector("#photo_info");
 const formEditProfile = document.getElementById("form_edit-profile");
-const nameInput = formEditProfile.querySelector("#nombre");
 
-const settingsValidation = {
-  formSelector: ".form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".forms__submit-button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "form__input-error",
-  errorClass: "popup__error_visible",
-};
-
-initialCards.forEach((item) => {
-  const card = new Card(item, openImage);
-  const cardElement = card.getCard();
-  cardContainer.prepend(cardElement);
-});
-
-createCardForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const card = new Card(
-    {
-      link: photoNewCard.value,
-      name: titleNewCard.value,
+// muestra la tajetas pre exitentes
+const renderCard = new Section(
+  {
+    items: initialCards,
+    renderer: (cardItems) => {
+      const card = new Card(cardItems, openImage);
+      return card.getCard();
     },
+  },
+  ".elements"
+);
+renderCard.renderer();
+
+//instancia de informacion de usuario
+const userInfo = new UserInfo(".profile__title", ".profile__subtitle");
+
+//crea las nuevas targetas
+export const popupCard = new PopupWhitForm("#popup__new-places", (values) => {
+  const card = new Card(
+    { link: values.photo_info, name: values.titulo },
     openImage
   );
-  const cardElement = card.getCard();
-  cardContainer.prepend(cardElement);
   formsPopupNewPlaces.close();
+  cardContainer.prepend(card.getCard());
+  validateFormNewBike.resetForm();
 });
+popupCard.setEventListener();
 
+// Expande la targeta seleccionanda
+export const popupWhitImage = new PopupWithImage(".popup_dialog");
+popupWhitImage.setEventListener();
+
+//edita la informacion de usuario
+export const popupEditProfile = new PopupWhitForm("#popupProfile", (data) => {
+  const { job_info, name } = data;
+  userInfo.setUserInfo(name, job_info);
+  popupEditProfile.close();
+  validateFormProfile.resetForm();
+});
+popupEditProfile.setEventListener();
+
+//validacion de los dos formularios
 export const validateFormProfile = new FormValidator(
   settingsValidation,
   formEditProfile
@@ -59,12 +64,3 @@ export const validateFormNewBike = new FormValidator(
   createCardForm
 );
 validateFormNewBike.enableValidation();
-
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  nameElement.textContent = nameInput.value;
-  jobElement.textContent = jobInput.value;
-  handleClosePopup(evt);
-}
-
-formElement.addEventListener("click", handleProfileFormSubmit);

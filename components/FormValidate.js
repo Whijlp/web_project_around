@@ -38,7 +38,7 @@ export default class FormValidator {
     }
   }
 
-  _resetForm() {
+  resetForm() {
     const inputList = Array.from(
       this._formElement.querySelectorAll(this._formValid.inputSelector)
     );
@@ -56,6 +56,7 @@ export default class FormValidator {
     const inputList = Array.from(
       formElement.querySelectorAll(formValid.inputSelector)
     );
+
     const submitButton = formElement.querySelector(
       formValid.submitButtonSelector
     );

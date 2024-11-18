@@ -1,14 +1,14 @@
-import { validateFormNewBike, validateFormProfile } from "./index.js";
+import {
+  popupEditProfile,
+  popupCard,
+  validateFormProfile,
+  validateFormNewBike,
+} from "./index.js";
 
-const dialogPopup = document.querySelector(".popup_dialog");
-const formsPopup = document.querySelector(".popup");
-const overlayContainer = document.querySelector(".popup__overlay");
 const openProfilePopup = document.querySelector(".profile__edit-button");
-const closePlacePopup = document.querySelector("#place-close-button");
-const formsPopupNewPlaces = document.querySelector("#popup__new-places");
-const closeProfilePopup = document.querySelector(".forms__close-button");
-const closeFormProfil = document.querySelector(".forms-profile-button");
 const openNewPlacePopup = document.querySelector(".profile__add-button");
+const closePlacePopup = document.querySelector("#place-close-button");
+const closeFormProfil = document.querySelector(".forms-profile-button");
 
 export const initialCards = [
   {
@@ -37,7 +37,17 @@ export const initialCards = [
   },
 ];
 
+export const settingsValidation = {
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".forms__submit-button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "form__input-error",
+  errorClass: "popup__error_visible",
+};
+
 export function openImage(item) {
+  const dialogPopup = document.querySelector(".popup_dialog");
   const dialogImge = dialogPopup.querySelector(".popup__img");
   const dialogDescription = dialogPopup.querySelector(".popup__description");
   dialogPopup.showModal();
@@ -45,53 +55,21 @@ export function openImage(item) {
   dialogImge.alt = item.name;
   dialogDescription.textContent = item.name;
 }
-export function handleOpenPopup() {
-  formsPopup.classList.add("popup__show");
-  overlayContainer.classList.add("overlay_show");
-}
-export function handleClosePopup(evt) {
-  evt.preventDefault();
-  formsPopup.classList.remove("popup__show");
-  overlayContainer.classList.remove("overlay_show");
-  formsPopupNewPlaces.close();
-  dialogPopup.close();
-  validateFormProfile._resetForm();
-  validateFormNewBike._resetForm();
-}
 
-openProfilePopup.addEventListener("click", handleOpenPopup);
-
-closeProfilePopup.addEventListener("click", handleClosePopup);
-
-closeFormProfil.addEventListener("click", handleClosePopup);
-
-overlayContainer.addEventListener("click", handleClosePopup);
+// Eventos de click para abrir perfil y nueva tarjeta
+openProfilePopup.addEventListener("click", () => {
+  popupEditProfile.open();
+});
 
 openNewPlacePopup.addEventListener("click", () => {
-  formsPopupNewPlaces.showModal();
+  popupCard.open();
 });
 
-closePlacePopup.addEventListener("click", (evt) => {
-  evt.preventDefault();
-  formsPopupNewPlaces.close();
-  handleClosePopup(evt);
-});
-dialogPopup.addEventListener("click", (evt) => {
-  if (evt.target.className === "popup_dialog") {
-    evt.preventDefault();
-    dialogPopup.close();
-  }
+//Evento para resetiar los formularios cuando se haga click en el boton de cerrar popup
+closePlacePopup.addEventListener("click", () => {
+  validateFormNewBike.resetForm();
 });
 
-formsPopupNewPlaces.addEventListener("click", (evt) => {
-  if (evt.target.className === "form__dialog") {
-    evt.preventDefault();
-    formsPopupNewPlaces.close();
-    handleClosePopup(evt);
-  }
-});
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    handleClosePopup(evt);
-  }
+closeFormProfil.addEventListener("click", () => {
+  validateFormProfile.resetForm();
 });
