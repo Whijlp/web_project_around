@@ -7,22 +7,11 @@ import PopupWithImage from "../components/PopupWhitImage.js";
 import UserInfo from "../components/UserInfo.js";
 
 const formsPopupNewPlaces = document.querySelector("#popup__new-places");
-//const formElement = document.querySelector("#perfil-button");
-//const jobInput = document.getElementById("job_info");
-//const nameElement = document.querySelector(".profile__title");
-//const jobElement = document.querySelector(".profile__subtitle");
 const cardContainer = document.querySelector(".elements");
 const createCardForm = document.querySelector("#create-card");
-//const titleNewCard = document.querySelector("#titulo");
-//const photoNewCard = document.querySelector("#photo_info");
 const formEditProfile = document.getElementById("form_edit-profile");
-//const nameInput = formEditProfile.querySelector("#nombre");
 const openProfilePopup = document.querySelector(".profile__edit-button");
 const openNewPlacePopup = document.querySelector(".profile__add-button");
-//const closeFormProfil = document.querySelector(".forms-profile-button");
-const overlayContainer = document.querySelector(".popup__overlay");
-
-//const closePlacePopup = document.querySelector("#place-close-button");
 
 const settingsValidation = {
   formSelector: ".form",

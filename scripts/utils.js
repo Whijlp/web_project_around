@@ -1,15 +1,3 @@
-import { validateFormNewBike, validateFormProfile } from "./index.js";
-
-const dialogPopup = document.querySelector(".popup_dialog");
-const formsPopup = document.querySelector(".popup");
-const overlayContainer = document.querySelector(".popup__overlay");
-const openProfilePopup = document.querySelector(".profile__edit-button");
-const closePlacePopup = document.querySelector("#place-close-button");
-const formsPopupNewPlaces = document.querySelector("#popup__new-places");
-const closeProfilePopup = document.querySelector(".forms__close-button");
-const closeFormProfil = document.querySelector(".forms-profile-button");
-const openNewPlacePopup = document.querySelector(".profile__add-button");
-
 export const initialCards = [
   {
     name: "Tiger 900",
@@ -38,6 +26,7 @@ export const initialCards = [
 ];
 
 export function openImage(item) {
+  const dialogPopup = document.querySelector(".popup_dialog");
   const dialogImge = dialogPopup.querySelector(".popup__img");
   const dialogDescription = dialogPopup.querySelector(".popup__description");
   dialogPopup.showModal();
@@ -45,49 +34,3 @@ export function openImage(item) {
   dialogImge.alt = item.name;
   dialogDescription.textContent = item.name;
 }
-/*
-export function handleOpenPopup() {
-  formsPopup.classList.add("popup__show");
-  overlayContainer.classList.add("overlay_show");
-}
-  */
-/*export function handleClosePopup(evt) {
-  evt.preventDefault();
-  formsPopup.classList.remove("popup__show");
-  overlayContainer.classList.remove("overlay_show");
-  formsPopupNewPlaces.close();
-  dialogPopup.close();
-  validateFormProfile._resetForm();
-  validateFormNewBike._resetForm();
-}
-
-//openProfilePopup.addEventListener("click", handleOpenPopup);
-
-closeProfilePopup.addEventListener("click", handleClosePopup);
-
-closeFormProfil.addEventListener("click", handleClosePopup);
-
-overlayContainer.addEventListener("click", handleClosePopup);
-
-openNewPlacePopup.addEventListener("click", () => {
-  formsPopupNewPlaces.showModal();
-});
-
-closePlacePopup.addEventListener("click", (evt) => {
-  evt.preventDefault();
-  formsPopupNewPlaces.close();
-  handleClosePopup(evt);
-});
-dialogPopup.addEventListener("click", (evt) => {
-  if (evt.target.className === "popup_dialog") {
-    evt.preventDefault();
-    dialogPopup.close();
-  }
-});
-
-
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    handleClosePopup(evt);
-  }
-});*/
