@@ -5,6 +5,7 @@ import Section from "../components/Section.js";
 import PopupWhitForm from "../components/PopupWhitForm.js";
 import PopupWithImage from "../components/PopupWhitImage.js";
 import UserInfo from "../components/UserInfo.js";
+import api from "../components/Api.js";
 
 const formsPopupNewPlaces = document.querySelector("#popup__new-places");
 const cardContainer = document.querySelector(".elements");
