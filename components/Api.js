@@ -1,26 +1,47 @@
 class Api {
   constructor(options) {
-    this.baseUrl = options.baseUrl;
+    this.baseURL = options.baseURL;
     this.headers = options.headers || {};
   }
 
   getInitialCards() {
-    return fetch(`${this.baseUrl}`, {
-      ...this.headers,
+    return fetch(`${this.baseURL}/cards`, {
+      method: "GET",
+      headers: {
+        ...this.headers,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          return Promise.reject(`Error: ${res.status}`);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  getUserInfo() {
+    console.log(this.baseURL);
+    return fetch(`${this.baseURL}/users/me`, {
+      method: "GET",
+      headers: {
+        ...this.headers,
+      },
     }).then((res) => {
       if (res.ok) {
         return res.json();
       }
     });
   }
-
   // otros métodos para trabajar con la API
 }
 
 const api = new Api({
-  baseUrl: "https://around-api.es.tripleten-services.com/v1",
+  baseURL: "https://around-api.es.tripleten-services.com/v1",
   headers: {
-    authorization: "df6c9fa0-1290-4e49-8529-ee99e5f3fc80",
+    authorization: "327c3904-1c97-4a31-961f-faa6d3ffb204",
     "Content-Type": "application/json",
   },
 });

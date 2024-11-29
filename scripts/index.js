@@ -1,6 +1,6 @@
 import FormValidator from "../components/FormValidate.js";
 import Card from "../components/Card.js";
-import { initialCards, openImage, settingsValidation } from "./utils.js";
+import { openImage, settingsValidation } from "./utils.js";
 import Section from "../components/Section.js";
 import PopupWhitForm from "../components/PopupWhitForm.js";
 import PopupWithImage from "../components/PopupWhitImage.js";
@@ -11,22 +11,27 @@ const formsPopupNewPlaces = document.querySelector("#popup__new-places");
 const cardContainer = document.querySelector(".elements");
 const createCardForm = document.querySelector("#create-card");
 const formEditProfile = document.getElementById("form_edit-profile");
-
 // muestra la tajetas pre exitentes
-const renderCard = new Section(
-  {
-    items: initialCards,
-    renderer: (cardItems) => {
-      const card = new Card(cardItems, openImage);
-      return card.getCard();
+
+api.getInitialCards().then((initialCards) => {
+  const renderCard = new Section(
+    {
+      items: initialCards,
+      renderer: (cardItems) => {
+        const card = new Card(cardItems, openImage);
+        return card.getCard();
+      },
     },
-  },
-  ".elements"
-);
-renderCard.renderer();
+    ".elements"
+  );
+  renderCard.renderer();
+});
 
 //instancia de informacion de usuario
 const userInfo = new UserInfo(".profile__title", ".profile__subtitle");
+api.getUserInfo().then((response) => {
+  console.log(response);
+});
 
 //crea las nuevas targetas
 export const popupCard = new PopupWhitForm("#popup__new-places", (values) => {
