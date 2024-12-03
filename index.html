@@ -42,6 +42,41 @@
               alt="cruz de boton"
             />
           </button>
+          <dialog>
+            <div class="popup__overlay"></div>
+          <div class="forms">
+            <h2 class="forms__title">Cambiar foto de perfil</h2>
+            <form class="form" id="form_edit-avatar">
+              <fieldset class="form__edit">
+                <input
+                  required
+                  name="name"
+                  class="form__input"
+                  type="text"
+                  id="nombre"
+                  placeholder="foto de perfil"
+                  minlength="2"
+                  maxlength="40"
+                />
+                <span
+                  name="name-error"
+                  id="name-error"
+                  class="form__input-error-span"
+                ></span>
+                <button
+                disabled
+                class="forms__submit-button"
+                id="perfil-button"
+                title="Guardar cambios"
+              >
+                Guardar
+              </button>
+              <button
+                class="forms__close-button close__button forms-profile-button"
+                title="cerrar"
+                type="button"
+              >
+          </dialog>
         </section>
         <section class="elements">
           <template id="card-template">

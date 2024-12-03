@@ -12,7 +12,6 @@ const cardContainer = document.querySelector(".elements");
 const createCardForm = document.querySelector("#create-card");
 const formEditProfile = document.getElementById("form_edit-profile");
 // muestra la tajetas pre exitentes
-
 api.getInitialCards().then((initialCards) => {
   const renderCard = new Section(
     {
@@ -28,9 +27,13 @@ api.getInitialCards().then((initialCards) => {
 });
 
 //instancia de informacion de usuario
-const userInfo = new UserInfo(".profile__title", ".profile__subtitle");
+const userInfo = new UserInfo(
+  ".profile__title",
+  ".profile__subtitle",
+  ".profile_image"
+);
 api.getUserInfo().then((response) => {
-  console.log(response);
+  userInfo.setUserInfo(response.name, response.about, response.avatar);
 });
 
 //crea las nuevas targetas

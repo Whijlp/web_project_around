@@ -18,6 +18,7 @@ export default class PopupWhitForm extends Popup {
 
   setEventListener() {
     super.setEventListener();
+    console.log(this._popupSelector);
     const formElement = this._popupSelector.querySelector(".form");
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();

@@ -2,6 +2,7 @@ export default class Popup {
   constructor(popupSelector) {
     this._popupSelector = document.querySelector(popupSelector);
     this._popupOverlay = this._popupSelector.querySelector(".popup__overlay");
+    console.log(this._popupSelector);
     this._isDialog = false;
     if (this._popupSelector.tagName == "DIALOG") {
       this._isDialog = true;

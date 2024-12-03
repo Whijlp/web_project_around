@@ -23,12 +23,25 @@ class Api {
       });
   }
   getUserInfo() {
-    console.log(this.baseURL);
     return fetch(`${this.baseURL}/users/me`, {
       method: "GET",
       headers: {
         ...this.headers,
       },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
+
+  editUserInfo(body) {
+    return fetch(`${this.baseURL}/users/me`, {
+      method: "PATCH",
+      headers: {
+        ...this.headers,
+      },
+      body: JSON.stringify(body),
     }).then((res) => {
       if (res.ok) {
         return res.json();
