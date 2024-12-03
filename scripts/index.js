@@ -11,6 +11,8 @@ const formsPopupNewPlaces = document.querySelector("#popup__new-places");
 const cardContainer = document.querySelector(".elements");
 const createCardForm = document.querySelector("#create-card");
 const formEditProfile = document.getElementById("form_edit-profile");
+const avatarEditProfile = document.querySelector("#avatar_edit-profile");
+
 // muestra la tajetas pre exitentes
 api.getInitialCards().then((initialCards) => {
   const renderCard = new Section(
