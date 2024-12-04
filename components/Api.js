@@ -48,6 +48,20 @@ class Api {
       }
     });
   }
+
+  editAvatarUser(avatar) {
+    return fetch(`${this.baseURL}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        ...this.headers,
+      },
+      body: JSON.stringify(avatar),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
   // otros métodos para trabajar con la API
 }
 

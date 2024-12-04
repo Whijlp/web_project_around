@@ -11,7 +11,8 @@ const formsPopupNewPlaces = document.querySelector("#popup__new-places");
 const cardContainer = document.querySelector(".elements");
 const createCardForm = document.querySelector("#create-card");
 const formEditProfile = document.getElementById("form_edit-profile");
-const avatarEditProfile = document.querySelector("#avatar_edit-profile");
+const openAvatarProfile = document.querySelector(".profile_avatar");
+const formPopupAvatar = document.querySelector("#form_edit-avatar");
 
 // muestra la tajetas pre exitentes
 api.getInitialCards().then((initialCards) => {
@@ -57,11 +58,38 @@ popupWhitImage.setEventListener();
 //edita la informacion de usuario
 export const popupEditProfile = new PopupWhitForm("#popupProfile", (data) => {
   const { job_info, name } = data;
+  api
+    .editUserInfo({
+      name: name,
+      about: job_info,
+    })
+    .then((response) => {
+      userInfo.setUserInfo(response.name, response.about, response.avatar);
+    });
   userInfo.setUserInfo(name, job_info);
   popupEditProfile.close();
   validateFormProfile.resetForm();
 });
 popupEditProfile.setEventListener();
+
+//editar avatar
+
+const popupEditAvatarProfile = new PopupWhitForm(
+  "#avatar_edit-profile",
+  (values) => {
+    api.editAvatarUser({ avatar: values.avatar }).then((response) => {
+      userInfo.setUserInfo(response.name, response.about, response.avatar);
+    });
+    popupEditAvatarProfile.close();
+  }
+);
+popupEditAvatarProfile.setEventListener();
+
+openAvatarProfile.addEventListener("click", (evt) => {
+  evt.preventDefault;
+
+  popupEditAvatarProfile.open();
+});
 
 //validacion de los dos formularios
 export const validateFormProfile = new FormValidator(
@@ -75,3 +103,9 @@ export const validateFormNewBike = new FormValidator(
   createCardForm
 );
 validateFormNewBike.enableValidation();
+
+const popupValidationAvatar = new FormValidator(
+  settingsValidation,
+  formPopupAvatar
+);
+popupValidationAvatar.enableValidation();

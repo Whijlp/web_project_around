@@ -9,7 +9,7 @@ const openProfilePopup = document.querySelector(".profile__edit-button");
 const openNewPlacePopup = document.querySelector(".profile__add-button");
 const closePlacePopup = document.querySelector("#place-close-button");
 const closeFormProfil = document.querySelector(".forms-profile-button");
-const openAvatarProfile = document.querySelector(".profile_avatar");
+
 const avatarEditProfile = document.querySelector("#avatar_edit-profile");
 
 export const settingsValidation = {
@@ -38,10 +38,6 @@ openProfilePopup.addEventListener("click", () => {
 
 openNewPlacePopup.addEventListener("click", () => {
   popupCard.open();
-});
-
-openAvatarProfile.addEventListener("click", () => {
-  avatarEditProfile.open();
 });
 
 //Evento para resetiar los formularios cuando se haga click en el boton de cerrar popup

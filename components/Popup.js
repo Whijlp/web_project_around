@@ -36,23 +36,11 @@ export default class Popup {
   }
 
   _handlecloseClick() {
-    const formsPopupNewPlaces = document.querySelector("#popup__new-places");
-    formsPopupNewPlaces.addEventListener("click", (evt) => {
-      if (evt.target.className === "form__dialog") {
-        evt.preventDefault();
-        this.close();
-      }
-    });
-    const dialogPopup = document.querySelector(".popup_dialog");
-    dialogPopup.addEventListener("click", (evt) => {
-      if (evt.target.className === "popup_dialog") {
-        evt.preventDefault();
-        this.close();
-      }
-    });
-
     this._popupSelector.addEventListener("click", (evt) => {
-      if (evt.target.classList.contains("popup__overlay")) {
+      if (
+        evt.target === this._popupSelector ||
+        evt.target.classList.contains("popup__overlay")
+      ) {
         this.close();
       }
     });
