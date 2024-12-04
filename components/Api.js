@@ -62,6 +62,21 @@ class Api {
       }
     });
   }
+
+  createCard(body) {
+    return fetch(`${this.baseURL}/cards/`, {
+      method: "POST",
+      headers: {
+        ...this.headers,
+      },
+      body: JSON.stringify(body),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
+
   // otros métodos para trabajar con la API
 }
 

@@ -41,13 +41,22 @@ api.getUserInfo().then((response) => {
 
 //crea las nuevas targetas
 export const popupCard = new PopupWhitForm("#popup__new-places", (values) => {
-  const card = new Card(
-    { link: values.photo_info, name: values.titulo },
-    openImage
-  );
-  formsPopupNewPlaces.close();
-  cardContainer.prepend(card.getCard());
-  validateFormNewBike.resetForm();
+  api
+    .createCard({ link: values.photo_info, name: values.titulo })
+    .then((res) => {
+      const card = new Card(
+        { link: values.photo_info, name: values.titulo },
+        openImage
+      );
+      cardContainer.prepend(card.getCard());
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      formsPopupNewPlaces.close();
+      validateFormNewBike.resetForm();
+    });
 });
 popupCard.setEventListener();
 
