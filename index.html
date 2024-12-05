@@ -94,7 +94,11 @@
               <div class="element__text">
                 <p class="element__title"></p>
                 <div class="element__like"></div>
-                <button class="element__trash" title="eliminar">
+                <button
+                  class="element__trash"
+                  title="eliminar"
+                  id="delete_button"
+                >
                   <img src="./images/Trash.png" alt="imagen de basurera" />
                 </button>
               </div>
@@ -170,6 +174,24 @@
             </form>
           </div>
         </dialog>
+        <dialog class="popup_confirmation">
+          <div class="forms">
+            <h2 class="forms__title">¿Estás seguro/a?</h2>
+            <button
+              class="forms__submit-button"
+              id="confirmation-button"
+              title="confirma eliminacion"
+            >
+              si
+            </button>
+            <button
+              class="forms__close-button close__button forms-profile-button"
+              title="cerrar"
+              type="button"
+            ></button>
+          </div>
+        </dialog>
+
         <div class="popup" id="popupProfile">
           <div class="popup__overlay"></div>
           <div class="forms">

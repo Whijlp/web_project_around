@@ -1,6 +1,5 @@
 export default class Popup {
   constructor(popupSelector) {
-    console.log(popupSelector);
     this._popupSelector = document.querySelector(popupSelector);
     this._popupOverlay = this._popupSelector.querySelector(".popup__overlay");
     this._isDialog = false;

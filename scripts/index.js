@@ -6,6 +6,7 @@ import PopupWhitForm from "../components/PopupWhitForm.js";
 import PopupWithImage from "../components/PopupWhitImage.js";
 import UserInfo from "../components/UserInfo.js";
 import api from "../components/Api.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const formsPopupNewPlaces = document.querySelector("#popup__new-places");
 const cardContainer = document.querySelector(".elements");
@@ -13,8 +14,27 @@ const createCardForm = document.querySelector("#create-card");
 const formEditProfile = document.getElementById("form_edit-profile");
 const openAvatarProfile = document.querySelector(".profile_avatar");
 const formPopupAvatar = document.querySelector("#form_edit-avatar");
+const deleteButtonContainer = document.querySelector("#card-template");
 
-// muestra la tajetas pre exitentes
+// function templateContainer(item) {
+//   const template = deleteButtonContainer.content
+//     .querySelector(".element")
+//     .cloneNode(true);
+//   const deletebutton = template.querySelector(".element__trash");
+//   deletebutton.addEventListener("click", () => {
+//     console.log("pip");
+//   });
+// }
+// templateContainer();
+
+const popupWithConfirmation = new PopupWithConfirmation(
+  "#card-template",
+  () => {
+    console.log("pip");
+  }
+);
+popupWithConfirmation.getTemplate();
+
 api.getInitialCards().then((initialCards) => {
   const renderCard = new Section(
     {

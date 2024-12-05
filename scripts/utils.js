@@ -10,8 +10,6 @@ const openNewPlacePopup = document.querySelector(".profile__add-button");
 const closePlacePopup = document.querySelector("#place-close-button");
 const closeFormProfil = document.querySelector(".forms-profile-button");
 
-const avatarEditProfile = document.querySelector("#avatar_edit-profile");
-
 export const settingsValidation = {
   formSelector: ".form",
   inputSelector: ".form__input",
@@ -39,6 +37,10 @@ openProfilePopup.addEventListener("click", () => {
 openNewPlacePopup.addEventListener("click", () => {
   popupCard.open();
 });
+
+// deletebutton.addEventListener("click", () => {
+//   console.log("pip");
+// });
 
 //Evento para resetiar los formularios cuando se haga click en el boton de cerrar popup
 closePlacePopup.addEventListener("click", () => {
