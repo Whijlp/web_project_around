@@ -16,31 +16,19 @@ const openAvatarProfile = document.querySelector(".profile_avatar");
 const formPopupAvatar = document.querySelector("#form_edit-avatar");
 const deleteButtonContainer = document.querySelector("#card-template");
 
-// function templateContainer(item) {
-//   const template = deleteButtonContainer.content
-//     .querySelector(".element")
-//     .cloneNode(true);
-//   const deletebutton = template.querySelector(".element__trash");
-//   deletebutton.addEventListener("click", () => {
-//     console.log("pip");
-//   });
-// }
-// templateContainer();
-
-const popupWithConfirmation = new PopupWithConfirmation(
-  "#card-template",
-  () => {
-    console.log("pip");
-  }
-);
-popupWithConfirmation.getTemplate();
+const popupWithConfirmation = new PopupWithConfirmation(".popup_confirmation");
+console.log(popupWithConfirmation);
 
 api.getInitialCards().then((initialCards) => {
   const renderCard = new Section(
     {
       items: initialCards,
       renderer: (cardItems) => {
-        const card = new Card(cardItems, openImage);
+        const card = new Card(
+          cardItems,
+          openImage,
+          popupWithConfirmation.openPopupConfirmation
+        );
         return card.getCard();
       },
     },
@@ -79,7 +67,7 @@ export const popupCard = new PopupWhitForm("#popup__new-places", (values) => {
     });
 });
 popupCard.setEventListener();
-
+popupWithConfirmation.setEventListener();
 // Expande la targeta seleccionanda
 export const popupWhitImage = new PopupWithImage(".popup_dialog");
 popupWhitImage.setEventListener();

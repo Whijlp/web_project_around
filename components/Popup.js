@@ -9,6 +9,7 @@ export default class Popup {
   }
 
   open() {
+    console.log(this._isDialog, "open");
     if (this._isDialog == true) {
       this._popupSelector.showModal();
     } else {

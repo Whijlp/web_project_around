@@ -1,8 +1,9 @@
 export default class Card {
-  constructor(data, openImage) {
+  constructor(data, openImage, deleteCard) {
     this._name = data.name;
     this._link = data.link;
     this._openImage = openImage;
+    this.deleteCard = deleteCard;
   }
 
   _getElement() {
@@ -36,7 +37,8 @@ export default class Card {
   }
 
   _removeCard() {
-    this.element.remove();
+    //this.element.remove();
+    this.deleteCard();
   }
 
   _closePopup() {
