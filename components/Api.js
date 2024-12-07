@@ -77,13 +77,12 @@ class Api {
     });
   }
 
-  deleteCard() {
-    return fetch(`${this.baseURL}/cards/:cardId`, {
+  deleteCard(cardId) {
+    return fetch(`${this.baseURL}/cards/${cardId}`, {
       method: "DELETE",
       headers: {
         ...this.headers,
       },
-      body: JSON.stringify(body),
     }).then((res) => {
       if (res.ok) {
         return res.json();

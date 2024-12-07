@@ -14,21 +14,22 @@ const createCardForm = document.querySelector("#create-card");
 const formEditProfile = document.getElementById("form_edit-profile");
 const openAvatarProfile = document.querySelector(".profile_avatar");
 const formPopupAvatar = document.querySelector("#form_edit-avatar");
-const deleteButtonContainer = document.querySelector("#card-template");
 
 const popupWithConfirmation = new PopupWithConfirmation(".popup_confirmation");
-console.log(popupWithConfirmation);
 
 api.getInitialCards().then((initialCards) => {
   const renderCard = new Section(
     {
       items: initialCards,
       renderer: (cardItems) => {
-        const card = new Card(
-          cardItems,
-          openImage,
-          popupWithConfirmation.openPopupConfirmation
-        );
+        const card = new Card(cardItems, openImage, () => {
+          popupWithConfirmation.open(() => {
+            api.deleteCard(cardItems._id).then(() => {
+              card._removeCard();
+              popupWithConfirmation.close();
+            });
+          });
+        });
         return card.getCard();
       },
     },

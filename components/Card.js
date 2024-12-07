@@ -37,8 +37,7 @@ export default class Card {
   }
 
   _removeCard() {
-    //this.element.remove();
-    this.deleteCard();
+    this.element.remove();
   }
 
   _closePopup() {
@@ -51,7 +50,7 @@ export default class Card {
     });
 
     this.trashCard.addEventListener("click", () => {
-      this._removeCard();
+      this.deleteCard();
     });
 
     this.closeButtonPopup.addEventListener("click", () => {

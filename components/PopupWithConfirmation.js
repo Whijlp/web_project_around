@@ -7,10 +7,17 @@ export default class PopupWithConfirmation extends Popup {
 
   setEventListener() {
     super.setEventListener();
+    const buttonSubmit = this._popupSelector.querySelector(
+      "#confirmation-button"
+    );
+    buttonSubmit.addEventListener("click", (evt) => {
+      evt.preventDefault();
+      this.handleSubmit();
+    });
   }
 
-  openPopupConfirmation() {
-    const modal = document.querySelector(".popup_confirmation");
-    modal.showModal();
+  open(handleSubmit) {
+    super.open();
+    this.handleSubmit = handleSubmit;
   }
 }

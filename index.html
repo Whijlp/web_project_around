@@ -174,7 +174,7 @@
             </form>
           </div>
         </dialog>
-        <dialog class="popup_confirmation">
+        <dialog class="form__dialog popup_confirmation">
           <div class="forms">
             <h2 class="forms__title">¿Estás seguro/a?</h2>
             <button
@@ -185,10 +185,17 @@
               si
             </button>
             <button
-              class="forms__close-button close__button forms-profile-button"
+              id="delete_close_button"
+              class="forms__close-button close__button"
               title="cerrar"
               type="button"
-            ></button>
+            >
+              <img
+                class="forms__image-button"
+                src="./images/formn_image.svg"
+                alt="imagen de una X"
+              />
+            </button>
           </div>
         </dialog>
 
