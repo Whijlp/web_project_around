@@ -5,7 +5,7 @@ import Section from "../components/Section.js";
 import PopupWhitForm from "../components/PopupWhitForm.js";
 import PopupWithImage from "../components/PopupWhitImage.js";
 import UserInfo from "../components/UserInfo.js";
-import api from "../components/Api.js";
+import Api from "../components/Api.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const formsPopupNewPlaces = document.querySelector("#popup__new-places");
@@ -14,6 +14,15 @@ const createCardForm = document.querySelector("#create-card");
 const formEditProfile = document.getElementById("form_edit-profile");
 const openAvatarProfile = document.querySelector(".profile_avatar");
 const formPopupAvatar = document.querySelector("#form_edit-avatar");
+const url = "https://around-api.es.tripleten-services.com/v1";
+
+const api = new Api({
+  baseURL: url,
+  headers: {
+    authorization: "327c3904-1c97-4a31-961f-faa6d3ffb204",
+    "Content-Type": "application/json",
+  },
+});
 
 const popupWithConfirmation = new PopupWithConfirmation(".popup_confirmation");
 
@@ -22,14 +31,15 @@ api.getInitialCards().then((initialCards) => {
     {
       items: initialCards,
       renderer: (cardItems) => {
-        const card = new Card(cardItems, openImage, () => {
-          popupWithConfirmation.open(() => {
-            api.deleteCard(cardItems._id).then(() => {
-              card._removeCard();
-              popupWithConfirmation.close();
-            });
-          });
-        });
+        const card = new Card(
+          cardItems,
+          openImage,
+          () => {
+            handleDelete(cardItems, card);
+          },
+          api.likeCard,
+          api.deleteLikeCard
+        );
         return card.getCard();
       },
     },
@@ -37,6 +47,15 @@ api.getInitialCards().then((initialCards) => {
   );
   renderCard.renderer();
 });
+
+const handleDelete = (cardItems, card) => {
+  popupWithConfirmation.open(() => {
+    api.deleteCard(cardItems._id).then(() => {
+      card._removeCard();
+      popupWithConfirmation.close();
+    });
+  });
+};
 
 //instancia de informacion de usuario
 const userInfo = new UserInfo(

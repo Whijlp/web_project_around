@@ -1,7 +1,9 @@
-class Api {
+export default class Api {
   constructor(options) {
     this.baseURL = options.baseURL;
     this.headers = options.headers || {};
+    this.likeCard = this.likeCard.bind(this);
+    this.deleteLikeCard = this.deleteLikeCard.bind(this);
   }
 
   getInitialCards() {
@@ -89,14 +91,30 @@ class Api {
       }
     });
   }
+  likeCard(body) {
+    return fetch(`${this.baseURL}/cards/${body._id}/likes`, {
+      method: "PUT",
+      headers: {
+        ...this.headers,
+      },
+      body: JSON.stringify({ ...body, isLiked: true }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
+
+  deleteLikeCard(body) {
+    return fetch(`${this.baseURL}/cards/${body._id}/likes`, {
+      method: "DELETE",
+      headers: {
+        ...this.headers,
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+  }
 }
-
-const api = new Api({
-  baseURL: "https://around-api.es.tripleten-services.com/v1",
-  headers: {
-    authorization: "327c3904-1c97-4a31-961f-faa6d3ffb204",
-    "Content-Type": "application/json",
-  },
-});
-
-export default api;

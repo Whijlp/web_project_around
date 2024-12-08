@@ -1,9 +1,12 @@
 export default class Card {
-  constructor(data, openImage, deleteCard) {
+  constructor(data, openImage, deleteCard, likeCard, deletelike) {
     this._name = data.name;
     this._link = data.link;
     this._openImage = openImage;
     this.deleteCard = deleteCard;
+    this.likeCard = likeCard;
+    this.data = data;
+    this.deletelike = deletelike;
   }
 
   _getElement() {
@@ -30,9 +33,17 @@ export default class Card {
     this.cardImage.src = this._link;
     this.cardImage.alt = this._name;
     this.cardDescription.textContent = this._name;
+    if (this.data.isLiked) {
+      this.likeButton.classList.add("element__like-active");
+    }
   }
 
   _toogleLike() {
+    if (this.data.isLiked) {
+      this.deletelike(this.data);
+    } else {
+      this.likeCard(this.data);
+    }
     this.likeButton.classList.toggle("element__like-active");
   }
 
