@@ -50,7 +50,7 @@
   opacity: 80%;
 }
 
-#delete_close_button {
+.forms_delete_close_button {
   position: absolute;
   bottom: 197px;
   left: 430px;

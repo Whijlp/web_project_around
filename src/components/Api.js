@@ -1,4 +1,3 @@
-import PopupWhitForm from "./PopupWhitForm.js";
 
 export default class Api {
   constructor(options) {
