@@ -50,19 +50,14 @@
   opacity: 80%;
 }
 
-.forms_delete_close_button {
-  position: absolute;
-  bottom: 197px;
-  left: 430px;
-}
 .forms__close-button {
   width: 40px;
   height: 40px;
   padding: 0;
   border: none;
   position: absolute;
-  bottom: 320px;
-  left: 430px;
+  top: -47px;
+  right: -45px;
   background: black;
   cursor: pointer;
   z-index: 2;
