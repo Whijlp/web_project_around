@@ -49,6 +49,12 @@
 .forms__submit-button:hover {
   opacity: 80%;
 }
+
+#delete_close_button {
+  position: absolute;
+  bottom: 197px;
+  left: 430px;
+}
 .forms__close-button {
   width: 40px;
   height: 40px;
