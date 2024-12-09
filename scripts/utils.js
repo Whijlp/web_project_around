@@ -38,10 +38,6 @@ openNewPlacePopup.addEventListener("click", () => {
   popupCard.open();
 });
 
-// deletebutton.addEventListener("click", () => {
-//   console.log("pip");
-// });
-
 //Evento para resetiar los formularios cuando se haga click en el boton de cerrar popup
 closePlacePopup.addEventListener("click", () => {
   validateFormNewBike.resetForm();
