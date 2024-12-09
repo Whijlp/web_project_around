@@ -1,3 +1,5 @@
+import PopupWhitForm from "./PopupWhitForm.js";
+
 export default class Api {
   constructor(options) {
     this.baseURL = options.baseURL;
@@ -22,7 +24,8 @@ export default class Api {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => {});
   }
   getUserInfo() {
     return fetch(`${this.baseURL}/users/me`, {

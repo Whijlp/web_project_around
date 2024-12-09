@@ -9,7 +9,6 @@ export default class Popup {
   }
 
   open() {
-    console.log("pip");
     if (this._isDialog == true) {
       this._popupSelector.showModal();
     } else {
@@ -52,7 +51,6 @@ export default class Popup {
 
     const closeButton = this._popupSelector.querySelector(".close__button");
     closeButton.addEventListener("click", () => {
-      console.log("pip");
       this.close();
     });
   }

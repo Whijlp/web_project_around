@@ -50,7 +50,7 @@ api.getInitialCards().then((initialCards) => {
 
 const handleDelete = (cardItems, card) => {
   popupWithConfirmation.open(() => {
-    api.deleteCard(cardItems._id).then(() => {
+    return api.deleteCard(cardItems._id).then(() => {
       card._removeCard();
       popupWithConfirmation.close();
     });
@@ -69,7 +69,7 @@ api.getUserInfo().then((response) => {
 
 //crea las nuevas targetas
 export const popupCard = new PopupWhitForm("#popup__new-places", (values) => {
-  api
+  return api
     .createCard({ link: values.photo_info, name: values.titulo })
     .then((res) => {
       const card = new Card(
@@ -95,17 +95,17 @@ popupWhitImage.setEventListener();
 //edita la informacion de usuario
 export const popupEditProfile = new PopupWhitForm("#popupProfile", (data) => {
   const { job_info, name } = data;
-  api
+  return api
     .editUserInfo({
       name: name,
       about: job_info,
     })
     .then((response) => {
       userInfo.setUserInfo(response.name, response.about, response.avatar);
+      userInfo.setUserInfo(name, job_info);
+      popupEditProfile.close();
+      validateFormProfile.resetForm();
     });
-  userInfo.setUserInfo(name, job_info);
-  popupEditProfile.close();
-  validateFormProfile.resetForm();
 });
 popupEditProfile.setEventListener();
 
@@ -114,10 +114,10 @@ popupEditProfile.setEventListener();
 const popupEditAvatarProfile = new PopupWhitForm(
   "#avatar_edit-profile",
   (values) => {
-    api.editAvatarUser({ avatar: values.avatar }).then((response) => {
+    return api.editAvatarUser({ avatar: values.avatar }).then((response) => {
       userInfo.setUserInfo(response.name, response.about, response.avatar);
+      popupEditAvatarProfile.close();
     });
-    popupEditAvatarProfile.close();
   }
 );
 popupEditAvatarProfile.setEventListener();
